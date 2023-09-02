@@ -27,6 +27,15 @@ router.get("/", function (req, res) {
     res.sendFile("views/index.html", { root: __dirname + "/../" });
 });
 
+//Login
+router.get('/api/login', (req, res) => {
+    res.sendFile("views/login.html", { root: __dirname + "/../" });    
+});
+
+//Signup
+router.get('/api/signup', (req, res) => {
+    res.sendFile("views/SignUp.html", { root: __dirname + "/../" });    
+});
 
 
 

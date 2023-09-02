@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            font-family: "Helvetica Neue", sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            margin-top: 5px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+        } 
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin-top: 5px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 12px 25px;
+            margin-top: 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #file-display {
+            margin-top: 30px;
+        }
+
+        #patient-file-content {
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+
+        p {
+            margin: 10px 0;
+        }
+
+        h3,
+        h4 {
+            margin-top: 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color:whitesmoke;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* ... (previous CSS rules) */
+
+        /* Style the "Request Medication" button */
+        #request-medication-button {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            
+        }
+
+        #request-medication {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        #request-medication:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <style>
+        /* Set the background color for the entire page */
+        body {
+            background-color: #5afb88; /* Replace with your desired color code or name */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>LOGIN AS PATIENT</h2>
+        <!-- Input for ID number -->
+        <label for="id-number">Enter your 13-digit ID Number:</label>
+        <input type="text" id="id-number" maxlength="16" required>
+        <!-- Button to check the ID number -->
+        <label for="id-number">Enter your Password:</label>
+        <input type="password" id="Pass" name="id-number" minumum ="13" maxlength="13" required pattern="[0-9]{13}">
+        <button id="check-id-button"><a href="dashboard.html">LOGIN</a></button>
+        <!-- Display patient file -->
+        <div id="file-display" class="hidden">
+            <div id="patient-file-content">
+                <h3>Patient File</h3>
+                <!-- Content will be generated using JavaScript -->
+            </div>
+        </div>
+        <!-- Request Medication button (as a hyperlink) -->
+        <div id="request-medication-button" class="hidden">
+            <a href="get_medication.html" id="request-medication">LOGIN AS PATIENT</a>
+        </div>
+    </div>
+    
+</body>
+
+</html>

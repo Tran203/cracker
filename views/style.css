@@ -1,0 +1,61 @@
+/* Style for the patient dashboard */
+.dashboard {
+    text-align: center;
+    margin: 20px auto;
+}
+
+/* Style for rows to position buttons */
+.row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+/* Common button style */
+.button {
+    flex-grow: 1;
+    padding: 15px 0;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+    color: white;
+    border-radius: 10px;
+    outline: none;
+    transition: background-color 0.3s ease;
+    font-family: Arial, sans-serif;
+    text-decoration: none; /* Remove underline */
+}
+
+/* Style for "Book Appointment" button */
+.book-appointment {
+    background-color: #4CAF50; /* Green color */
+}
+
+/* Style for "Medication" button */
+.medication {
+    background-color: #ebeced; /* Blue color */
+    color: black;
+}
+
+/* Style for "Emergency" button */
+.emergency {
+    background-color: #4CAF50; /* Red color */
+}
+
+/* Style for "GBV" button */
+.gbv {
+    background-color: #ebeced;/* Orange color */
+    color: black;
+}
+
+/* Style for "FAQ's" button */
+.faqs {
+    flex-grow: 3;
+    background-color: #4CAF50; /* Yellow color */
+}
+
+/* Hover effect */
+.button:hover {
+    background-color: #333; /* Dark background on hover */
+}
