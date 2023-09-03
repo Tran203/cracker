@@ -9,6 +9,7 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
+    display: block;
 }
 
 /* Common button style */

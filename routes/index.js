@@ -37,6 +37,26 @@ router.get('/api/signup', (req, res) => {
     res.sendFile("views/SignUp.html", { root: __dirname + "/../" });    
 });
 
+//dashboard
+router.get('/api/dashboard', (req, res) => {
+    res.sendFile("views/dashboard.html", { root: __dirname + "/../" });    
+});
+
+//ticket
+router.get('/api/ticket', (req, res) => {
+  res.sendFile("views/ticket.html", { root: __dirname + "/../" });    
+});
+
+
+//request_medication
+router.get('/api/request_medication', (req, res) => {
+  res.sendFile("views/request_medication.html", { root: __dirname + "/../" });    
+});
+router.get('/api/get_medication', (req, res) => {
+  res.sendFile("views/get_medication.html", { root: __dirname + "/../" });    
+});
+
+
 
 
 router.post('/api/login', (req, res) => {
