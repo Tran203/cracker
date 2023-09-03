@@ -42,9 +42,9 @@ router.get('/api/dashboard', (req, res) => {
     res.sendFile("views/dashboard.html", { root: __dirname + "/../" });    
 });
 
-//ticket
-router.get('/api/ticket', (req, res) => {
-  res.sendFile("views/ticket.html", { root: __dirname + "/../" });    
+//location
+router.get('/api/location', (req, res) => {
+  res.sendFile("views/get_location.html", { root: __dirname + "/../" });    
 });
 
 
