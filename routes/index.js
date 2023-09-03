@@ -36,6 +36,49 @@ router.get('/api/login', (req, res) => {
 router.get('/api/signup', (req, res) => {
     res.sendFile("views/SignUp.html", { root: __dirname + "/../" });    
 });
+//Signup
+router.post('/api/signup', (req, res) => {
+  //collect forn details
+  const {
+    firstName,
+    lastName,
+    residentialAddress,
+    idNumberOrPassport,
+    emailAddress,
+    password,
+  } = req.body;
+
+  // Check if all required fields are provided
+  if (
+    !firstName ||
+    !lastName ||
+    !residentialAddress ||
+    !idNumberOrPassport ||
+    !emailAddress ||
+    !password
+  ) {
+    return res.status(400).json({ error: 'All fields are required' });
+  }
+
+  // Create an SQL query to insert the data into the Patient table
+  const sql = `INSERT INTO Patient (FirstName, LastName, ResidentialAddress, IDNumberOrPassport, EmailAddress, PasswordS) VALUES (?, ?, ?, ?, ?, ?)`;
+
+  // Execute the SQL query with the provided form data
+  db.query(
+    sql,
+    [firstName, lastName, residentialAddress, idNumberOrPassport, emailAddress, password],
+    (err, result) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).json({ error: 'Error inserting data into the database' });
+      }
+
+      console.log('Data inserted into the database');
+      res.sendFile("views/dashboard.html", { root: __dirname + "/../" });
+    }
+  );
+
+});
 
 //dashboard
 router.get('/api/dashboard', (req, res) => {

@@ -22,7 +22,7 @@ CREATE TABLE Ticket (
 CREATE TABLE MedicationRequest (
     RequestID INT PRIMARY KEY AUTO_INCREMENT,
     PatientID INT NOT NULL, -- Add a PatientID column
-    Condition VARCHAR(255) NOT NULL,
+    ConditionNature VARCHAR(255) NOT NULL,
     MedicineName VARCHAR(255) NOT NULL,
     Instructions TEXT,
     RequestDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

@@ -117,9 +117,14 @@
         <input type="text" id="region" list="regions" maxlength="16" required>
         <!-- Datalist for Region Numbers and Names -->
         <datalist id="regions">
-            <option value="1">Region Name 1</option>
-            <option value="2">Region Name 2</option>
-            <option value="3">Region Name 3</option>
+            <option value="1">Soshanguve</option>
+            <option value="2">Wonderboom</option>
+            <option value="3">Pretoria CBD</option>
+            <option value="4">Centurion</option>
+            <option value="5">Roodeplatt</option>
+            <option value="6">Pretiria East</option>
+            <option value="7">Bronkhorstpruit</option>
+
             <!-- Add more options for other regions as needed -->
         </datalist>
 
@@ -145,19 +150,36 @@
         // Define clinic data for different regions
         var clinicData = {
             "1": [
-                { name: "Clinic 1", operatingTimes: "8:00 AM - 5:00 PM", status: "75%" },
-                { name: "Clinic 2", operatingTimes: "9:00 AM - 6:00 PM", status: "60%" },
-                { name: "Clinic 3", operatingTimes: "7:30 AM - 4:30 PM", status: "85%" }
+                { name: "Tshwane District Hospital", operatingTimes: "8:00 AM - 5:00 PM", status: "75%" },
+                { name: "1 Military Hospital", operatingTimes: "9:00 AM - 6:00 PM", status: "30%" },
+                { name: "Steve Biko", operatingTimes: "7:30 AM - 4:30 PM", status: "35%" }
             ],
             "2": [
-                { name: "Clinic A", operatingTimes: "8:30 AM - 4:30 PM", status: "90%" },
-                { name: "Clinic B", operatingTimes: "10:00 AM - 7:00 PM", status: "70%" },
-                { name: "Clinic C", operatingTimes: "9:30 AM - 5:30 PM", status: "80%" }
+                { name: "Dr. Christa Rocher", operatingTimes: "8:30 AM - 4:30 PM", status: "90%" },
+                { name: "Jubilee District Hospital", operatingTimes: "10:00 AM - 7:00 PM", status: "70%" },
+                { name: "Health Clinic", operatingTimes: "9:30 AM - 5:30 PM", status: "80%" }
             ],
             "3": [
-                { name: "Clinic X", operatingTimes: "7:00 AM - 3:00 PM", status: "95%" },
-                { name: "Clinic Y", operatingTimes: "8:30 AM - 4:30 PM", status: "60%" },
+                { name: "Folang Clinic", operatingTimes: "7:00 AM - 3:00 PM", status: "95%" },
+                { name: " Arv Cloinic", operatingTimes: "8:30 AM - 4:30 PM", status: "60%" },
                 { name: "Clinic Z", operatingTimes: "9:00 AM - 5:00 PM", status: "75%" }
+            ]
+            "4": [
+                { name: "Lenmed Zamokuhle Clinic", operatingTimes: "7:00 AM - 3:00 PM", status: "95%" },
+                { name: " Kalafong Hspital", operatingTimes: "8:30 AM - 4:30 PM", status: "60%" },
+                { name: "PTA West Hospital", operatingTimes: "9:00 AM - 5:00 PM", status: "75%" }
+            ] "5": [
+                { name: "Medi forum", operatingTimes: "7:00 AM - 3:00 PM", status: "95%" },
+                { name: " Harteneesfountein Clinic", operatingTimes: "8:30 AM - 4:30 PM", status: "60%" },
+                { name: "Mamelodi Hospital", operatingTimes: "9:00 AM - 5:00 PM", status: "75%" }
+            ] "6": [
+                { name: "Louis Pasteur", operatingTimes: "7:00 AM - 3:00 PM", status: "95%" },
+                { name: " Sediba hope  Medical Care Center", operatingTimes: "8:30 AM - 4:30 PM", status: "60%" },
+                { name: "Watloo Clinic", operatingTimes: "9:00 AM - 5:00 PM", status: "75%" }
+            ] "7": [
+                { name: "Priohealth clinic ", operatingTimes: "7:00 AM - 3:00 PM", status: "95%" },
+                { name: "Ph Medical", operatingTimes: "8:30 AM - 4:30 PM", status: "60%" },
+                { name: "Sum shine Clinic", operatingTimes: "9:00 AM - 5:00 PM", status: "75%" }
             ]
         };
 
@@ -200,7 +222,7 @@
         function enableNextPageLink(selectedClinic) {
             var nextPageLink = document.getElementById("next-page-link");
            // nextPageLink.href = '/api/que_reason' + encodeURIComponent(selectedClinic);
-           nextPageLink.href = '/api/generate_ticket';
+           nextPageLink.href = '/api/generate';
             nextPageLink.style.display = "inline"; // Show the next page link
 
             // Hide the "UPLOAD LOCATION" button
