@@ -29,7 +29,7 @@ router.get("/", function (req, res) {
 
 //Login
 router.get('/api/login', (req, res) => {
-    res.sendFile("views/login.html", { root: __dirname + "/../" });    
+    res.sendFile("views/Login.html", { root: __dirname + "/../" });    
 });
 
 //Signup
