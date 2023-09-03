@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Location</title>
     <style>
         body {
             font-family: "Helvetica Neue", sans-serif;
-            background-color: #f5f5f5;
+            background-color: #5afb88;
             margin: 0;
             padding: 0;
         }
@@ -35,13 +38,6 @@
             margin-top: 5px;
             border: 2px solid #ccc;
             border-radius: 5px;
-        } 
-        input[type="password"] {
-            width: 100%;
-            padding: 12px;
-            margin-top: 5px;
-            border: 2px solid #ccc;
-            border-radius: 5px;
         }
 
         button {
@@ -62,51 +58,42 @@
             display: none;
         }
 
-        #file-display {
-            margin-top: 30px;
+        #clinic-table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
         }
 
-        #patient-file-content {
-            background-color: #fff;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        #clinic-table th,
+        #clinic-table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ccc;
         }
 
-        p {
-            margin: 10px 0;
+        #clinic-table th {
+            background-color: #4CAF50;
+            color: #fff;
         }
 
-        h3,
-        h4 {
+        #clinic-table tbody tr:hover {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+
+        .clinic-link {
+            color: #0078d4;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        /* Style the "Go to Next Page" container */
+        #next-page-container {
             margin-top: 20px;
         }
 
-        a {
-            text-decoration: none;
-            color:whitesmoke;
-            font-weight: bold;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        /* ... (previous CSS rules) */
-
-        /* Style the "Request Medication" button */
-        #request-medication-button {
-            background-color: #4CAF50;
-            color: #fff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
-            
-        }
-
-        #request-medication {
+        /* Style the "Go to Next Page" button */
+        #next-page-link {
             display: inline-block;
             padding: 12px 25px;
             background-color: #4CAF50;
@@ -118,32 +105,111 @@
             transition: background-color 0.3s;
         }
 
-        #request-medication:hover {
+        #next-page-link:hover {
             background-color: #0056b3;
         }
     </style>
-    <style>
-        /* Set the background color for the entire page */
-        body {
-            background-color: #5afb88; /* Replace with your desired color code or name */
-        }
-    </style>
 </head>
-
 <body>
     <div class="container">
         <h2>Upload Location</h2>
-        <!-- Input for ID number -->
-        <label for="id-number">Enter you region number:</label>
-        <input type="text" id="id-number" maxlength="16" required>
-        <!-- Button to check the ID number -->
-       
-        <button id="check-id-button"><a href="dashboard.html">UPLOAD LOCATION</a></button>
-        <!-- Display patient file -->
-    
+        <label for="region">Select or Enter your region number:</label>
+        <input type="text" id="region" list="regions" maxlength="16" required>
+        <!-- Datalist for Region Numbers and Names -->
+        <datalist id="regions">
+            <option value="1">Region Name 1</option>
+            <option value="2">Region Name 2</option>
+            <option value="3">Region Name 3</option>
+            <!-- Add more options for other regions as needed -->
+        </datalist>
+
+        <!-- Display the clinic table -->
+        <table id="clinic-table" class="hidden">
+            <thead>
+                <tr>
+                    <th>Clinic Name</th>
+                    <th>Operating Times</th>
+                    <th>Booked/Queue Status</th>
+                </tr>
+            </thead>
+            <tbody id="clinic-table-body"></tbody>
+        </table>
+
+        <!-- Next page link (initially hidden) -->
+        <div id="next-page-container">
+            <a id="next-page-link" href="#" style="display: none;">Go to Next Page</a>
         </div>
     </div>
-    
-</body>
 
+    <script>
+        // Define clinic data for different regions
+        var clinicData = {
+            "1": [
+                { name: "Clinic 1", operatingTimes: "8:00 AM - 5:00 PM", status: "75%" },
+                { name: "Clinic 2", operatingTimes: "9:00 AM - 6:00 PM", status: "60%" },
+                { name: "Clinic 3", operatingTimes: "7:30 AM - 4:30 PM", status: "85%" }
+            ],
+            "2": [
+                { name: "Clinic A", operatingTimes: "8:30 AM - 4:30 PM", status: "90%" },
+                { name: "Clinic B", operatingTimes: "10:00 AM - 7:00 PM", status: "70%" },
+                { name: "Clinic C", operatingTimes: "9:30 AM - 5:30 PM", status: "80%" }
+            ],
+            "3": [
+                { name: "Clinic X", operatingTimes: "7:00 AM - 3:00 PM", status: "95%" },
+                { name: "Clinic Y", operatingTimes: "8:30 AM - 4:30 PM", status: "60%" },
+                { name: "Clinic Z", operatingTimes: "9:00 AM - 5:00 PM", status: "75%" }
+            ]
+        };
+
+        // Function to populate the clinic table based on the selected region
+        function populateClinicTable() {
+            var regionInput = document.getElementById("region").value;
+            var clinicTable = document.getElementById("clinic-table");
+            var clinicTableBody = document.getElementById("clinic-table-body");
+            var nextPageLink = document.getElementById("next-page-link");
+
+            // Clear the previous table content
+            clinicTableBody.innerHTML = "";
+
+            // Check if the selected region has clinic data
+            if (clinicData.hasOwnProperty(regionInput)) {
+                var clinics = clinicData[regionInput];
+
+                // Populate the table with clinic data
+                clinics.forEach(function (clinic) {
+                    var row = document.createElement("tr");
+                    row.innerHTML = `
+                        <td><span class="clinic-link" onclick="enableNextPageLink('${clinic.name}')">${clinic.name}</span></td>
+                        <td>${clinic.operatingTimes}</td>
+                        <td>${clinic.status}</td>
+                    `;
+                    clinicTableBody.appendChild(row);
+                });
+
+                // Show the clinic table
+                clinicTable.classList.remove("hidden");
+                nextPageLink.style.display = "none"; // Hide the next page link
+            } else {
+                // If no clinic data is available for the selected region, hide the table
+                clinicTable.classList.add("hidden");
+                nextPageLink.style.display = "none"; // Hide the next page link
+            }
+        }
+
+        // Function to enable the next page link and store the selected clinic
+        function enableNextPageLink(selectedClinic) {
+            var nextPageLink = document.getElementById("next-page-link");
+           // nextPageLink.href = '/api/que_reason' + encodeURIComponent(selectedClinic);
+           nextPageLink.href = '/api/generate_ticket';
+            nextPageLink.style.display = "inline"; // Show the next page link
+
+            // Hide the "UPLOAD LOCATION" button
+            var uploadButton = document.querySelector("#check-id-button");
+            uploadButton.style.display = "none";
+        }
+
+        // Attach the function to the region input's change event
+        document.getElementById("region").addEventListener("change", populateClinicTable);
+    </script>
+</body>
 </html>

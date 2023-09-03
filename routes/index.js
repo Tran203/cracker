@@ -44,7 +44,17 @@ router.get('/api/dashboard', (req, res) => {
 
 //location
 router.get('/api/location', (req, res) => {
-  res.sendFile("views/get_location.html", { root: __dirname + "/../" });    
+  res.sendFile("views/location.html", { root: __dirname + "/../" });    
+});
+
+//booking_reason
+router.get('/api/que_reason', (req, res) => {
+  res.sendFile("views/book_appointment.html", { root: __dirname + "/../" });    
+});
+
+//generate_ticket
+router.get('/api/generate_ticket', (req, res) => {
+  res.sendFile("views/generate_ticket.html", { root: __dirname + "/../" });    
 });
 
 
