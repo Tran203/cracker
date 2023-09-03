@@ -87,7 +87,7 @@ router.get('/api/dashboard', (req, res) => {
 
 //location
 router.get('/api/location', (req, res) => {
-  res.sendFile("views/location.html", { root: __dirname + "/../" });    
+  res.sendFile("views/Location.html", { root: __dirname + "/../" });    
 });
 
 //booking_reason
