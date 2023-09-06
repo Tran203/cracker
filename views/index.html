@@ -3,63 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cover Page</title>
+    <title>CLINIC</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #53e40b;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-image: url('clinic.jpg'); /* Replace with your image path */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
 
-        .container {
+        header {
+            background-color: #50C878;
+            text-align: right;
+            padding: 35px 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        nav {
+            position: absolute;
+            top: 30px;
+            right: 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            margin: 0 20px;
+            padding: 5px 10px; /* Add padding to make the clickable area larger */
+        }
+
+        .centered-div {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(90, 200, 120, 0.9); /* Transparent green background */
+            padding: 20px;
             text-align: center;
+            z-index: 2;
         }
 
-        h1 {
-            font-size: 36px;
-            color: #333;
+        .centered-div h2 {
+            color: white;
+            font-size: 2.5em;
         }
 
-        .login-signup {
-            display: flex;
-            justify-content: space-around;
+        .buttons {
             margin-top: 20px;
         }
 
-        .login, .signup {
+        .buttons button {
+            background-color: #3d7d30;
+            color: white;
+            border: none;
             padding: 10px 20px;
-            background-color: #ffffff;
-            color: #010101;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 18px;
+            margin: 0 10px;
+            cursor: pointer;
         }
-        .siye
-        {
-            padding: 10px 20px;
-            background-color: #b7bcc1;
-            color: #0c0c0c;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 18px;
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        p {
+            margin: 20px 0;
+            color: white;
+            font-size: 1.9em;
+        }
+
+        /* Style for the active link */
+        .active-link {
+            background-color: #3d7d30 !important; /* Darker background color for active link */
+        }
+
+        .buttons {
+            margin-top: 20px;
+        }
+
+        .form-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form-container form {
+            margin: 0;
+        }
+
+        .form-container button {
+            margin: 0 10px;
         }
     </style>
 </head>
 <body>
-    <section class ="siye">
-    <div class="container">
-        <h1>Welcome to Our Website</h1>
-        <div class="login-signup">
-            <a class="login" href="/api/login">Login</a>
-            <a class="signup" href="/api/signup">Sign Up</a>
-        </div>
+    <header>
+        <nav>
+            <a href="#home" class="active-link">HOME</a>
+            <a href="#about">ABOUT</a>
+            <a href="#services">SERVICES</a>
+            <a href="#contact">CONTACT</a>
+        </nav>
+    </header>
+
+    <div class="centered-div">
+        <h2>QUEUE MANAGEMENT SYSTEM
+            FOR CLINICS</h2>
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing
+            elit, sed diam nonummy nibh euismod tincidunt
+            ut laoreet dolore magna aliquam erat volutpat.</p>
+            <div class="buttons">
+                <div class="form-container">
+                    <form action="./SignUp.html">
+                        <button type="submit">LOG IN</button>
+                    </form>
+                    <form action="./SignUp.html">
+                        <button type="submit">SIGN UP</button>
+                    </form>
+                </div>
+            </div>
     </div>
-</section>
+
+    <script>
+        // JavaScript to toggle the active class on navigation links
+        const navLinks = document.querySelectorAll('nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.forEach(link => link.classList.remove('active-link'));
+                link.classList.add('active-link');
+            });
+        });
+    </script>
 </body>
 </html>
