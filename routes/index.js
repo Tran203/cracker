@@ -5,13 +5,21 @@ const cors = require('cors');
 const mysql = require('mysql');
 
 //database
-const db = mysql.createConnection({
+/*const db = mysql.createConnection({
     host: 'sql8.freemysqlhosting.net',
     user: 'sql8644076',
     port:"3306",
     password: '7xIUTgHi35',
     database: 'sql8644076',
+  }); */
+
+  const db = mysql.createConnection({
+    host: '127.0.0.1',
+    user: 'root',
+    port:"3306",
+    database: 'user',
   });
+
 
 //Express Router
 const router = express.Router();
@@ -35,6 +43,28 @@ router.get('/api/login', (req, res) => {
 router.post('/api/login', (req, res) => {
   const receivedData = req.body;
   console.log('Received data:', receivedData);
+
+  const {idNumberOrPassport, password} = req.body;
+
+  //sql
+  var sql = "SELECT * FROM Patient where idNumberOrPassport =? and password = ?";
+
+  //query
+  db.query(sql,[idNumberOrPassport,password], function(err,result){
+    if(err){
+      throw err;
+    }else{
+       //check details
+       if (result.rows.length > 0) {
+        var fullname = result.rows[0].firstname;
+        console.log(fullname + ' has Login successful!');
+        //res.status(200).json({ message: 'Login successful!' });
+      } else {
+          //res.status(401).json({ message: 'Invalid email or password' });
+          console.log('Invalid email or password');
+      }
+    }
+  });
 
   // Handle the data on the server as needed
   console.log('Email:', receivedData.email);
