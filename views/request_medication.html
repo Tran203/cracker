@@ -121,10 +121,12 @@
     <div class="container">
         <h2>Request Medication</h2>
         <!-- Input for ID number -->
-        <label for="id-number">Enter your 13-digit ID Number/Passport Number:</label>
-        <input type="text" id="id-number" name="id-number" maxlength="13" required pattern="[0-9]{13}">
+        <form  action="/api/request_medication" method="POST">
+            <label for="id-number">Enter your 13-digit ID Number/Passport Number:</label>
+        <input type="text" id="id-number" name="IDNumberOrPassport" maxlength="13" required pattern="[0-9]{13}">
         <!-- Button to check the ID number -->
-        <button id="check-id-button">Check ID Number</button>
+        <button id="check-id-button" type="submit">Check ID Number</button>
+        </form>
         <!-- Display patient file -->
         <div id="file-display" class="hidden">
             <div id="patient-file-content">
@@ -137,71 +139,7 @@
             <a href="/api/get_medication" id="request-medication">Request Medication</a>
         </div>
     </div>
-    <script>
-        const idNumberInput = document.getElementById("id-number");
-        const checkIdButton = document.getElementById("check-id-button");
-        const fileDisplay = document.getElementById("file-display");
-        const patientFileContent = document.getElementById("patient-file-content");
-        const requestMedicationButton = document.getElementById("request-medication-button");
-        const requestMedication = document.getElementById("request-medication");
 
-        checkIdButton.addEventListener("click", function () {
-            const idNumber = idNumberInput.value;
-
-            // Check if the ID number is 13 digits long
-            if (idNumber.length === 13) {
-                // Get the seventh digit
-                const seventhDigit = idNumber.charAt(0);
-
-                // Check if the seventh digit is 0 (South African citizen)
-                if (seventhDigit === "0") {
-                    // Generate patient file content
-                    generatePatientFileContent();
-                    // Display the patient file
-                    fileDisplay.classList.remove("hidden");
-                    // Show the "Request Medication" button
-                    requestMedicationButton.classList.remove("hidden");
-                } else {
-                    // Display a message for non-South African citizens
-                    patientFileContent.innerHTML = "<p>You are not a South African citizen.</p>";
-                    // Display the message and hide the file content and button
-                    fileDisplay.classList.remove("hidden");
-                    requestMedicationButton.classList.add("hidden");
-                }
-            } else {
-                // Hide the file display and button if the ID number is not 13 digits
-                fileDisplay.classList.add("hidden");
-                requestMedicationButton.classList.add("hidden");
-            }
-        });
-
-        function generatePatientFileContent() {
-            // Example patient file content
-            const patientName = "John Smith";
-            const idNumber = "8001015009087";
-            const gender = "Male";
-            const dateOfBirth = "1980-01-01";
-            const address = "123 Clinic Street, Pretoria";
-            const phoneNumber = "012-345-6789";
-            const medicalHistory = "Patient has a history of hypertension.";
-            const prescribedMedication = "Lisinopril (10mg) for hypertension.";
-
-            const content = `
-                <p><strong>Name:</strong> ${patientName}</p>
-                <p><strong>ID Number:</strong> ${idNumber}</p>
-                <p><strong>Gender:</strong> ${gender}</p>
-                <p><strong>Date of Birth:</strong> ${dateOfBirth}</p>
-                <p><strong>Address:</strong> ${address}</p>
-                <p><strong>Phone Number:</strong> ${phoneNumber}</p>
-                <h4>Medical History:</h4>
-                <p>${medicalHistory}</p>
-                <h4>Prescribed Medication:</h4>
-                <p>${prescribedMedication}</p>
-            `;
-
-            patientFileContent.innerHTML = content;
-        }
-    </script>
 </body>
 
 </html>

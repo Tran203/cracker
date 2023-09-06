@@ -134,12 +134,14 @@
     <div class="container">
         <h2>LOGIN AS PATIENT</h2>
         <!-- Input for ID number -->
-        <label for="id-number">Enter your 13-digit ID Number:</label>
-        <input type="text" id="id-number" maxlength="16" required>
+       <form action="/api/login" method="post">
+        <label for="ID">Enter your 13-digit ID Number:</label>
+        <input type="text" id="ID" maxlength="13" name="id">
         <!-- Button to check the ID number -->
         <label for="id-number">Enter your Password:</label>
-        <input type="password" id="Pass" name="id-number" minumum ="13" maxlength="13" required pattern="[0-9]{13}">
-        <button id="check-id-button"><a href="/api/dashboard">LOGIN</a></button>
+        <input type="password" id="Pass" name="password"  maxlength="13" required>
+        <button id="check-id-button" type ="submit">LOGIN</button>
+       </form>
         <!-- Display patient file -->
     </div>
     

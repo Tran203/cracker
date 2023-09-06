@@ -31,6 +31,24 @@ router.get("/", function (req, res) {
 router.get('/api/login', (req, res) => {
     res.sendFile("views/Login.html", { root: __dirname + "/../" });    
 });
+router.post('/api/login', (req, res) => {
+  var{id, password} = req.body;
+
+  //sql
+  var sql = "select FirstName from Patient where IDNumberOrPassport = ? and PasswordS = ?";
+
+  //
+  db.query(sql,[id,password],function(err){
+     if (err) {
+      console.error(err);
+      res.status(500).json({ error: 'ID DOES NOT EXIST IN THE DATABASE' });
+    }
+
+    console.log('WELCOME To Q-MIN');
+    res.sendFile("views/dashboard.html", { root: __dirname + "/../" });
+  });
+});
+
 
 //Signup
 router.get('/api/signup', (req, res) => {
@@ -38,6 +56,8 @@ router.get('/api/signup', (req, res) => {
 });
 //Signup
 router.post('/api/signup', (req, res) => {
+
+
   //collect forn details
   const {
     firstName,
@@ -78,6 +98,7 @@ router.post('/api/signup', (req, res) => {
     }
   );
 
+
 });
 
 //dashboard
@@ -105,6 +126,38 @@ router.get('/api/generate_ticket', (req, res) => {
 router.get('/api/request_medication', (req, res) => {
   res.sendFile("views/request_medication.html", { root: __dirname + "/../" });    
 });
+
+router.post('/api/request_medication', (req, res) => {
+  var id = req.body;
+
+  //sql
+  var sql = "select * from Patient where IDNumberOrPassport = ?";
+
+  
+  db.query(sql, [id], (err, result) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ error: 'Error querying the database' });
+    }
+    
+
+    var patient = result[0];
+    console.log(patient);
+
+    // Check if a patient with the given ID exists
+    if (result.length === 0) {
+      return res.status(404).json({ error: 'Patient not found' });
+    }
+    
+
+    // Render an EJS template to display the patient details
+    res.render('Patient.ejs', { patient: result[0] });
+  });
+});
+
+module.exports = router;
+
+
 router.get('/api/get_medication', (req, res) => {
   res.sendFile("views/get_medication.html", { root: __dirname + "/../" });    
 });
