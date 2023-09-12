@@ -17,7 +17,7 @@ const mysql = require('mysql');
     host: '127.0.0.1',
     user: 'root',
     port:"3306",
-    database: 'user',
+    database: 'test',
   });
 
 
@@ -44,19 +44,19 @@ router.post('/api/login', (req, res) => {
   const receivedData = req.body;
   console.log('Received data:', receivedData);
 
-  const {idNumberOrPassport, password} = req.body;
+  const {email, password} = req.body;
 
   //sql
-  var sql = "SELECT * FROM Patient where idNumberOrPassport =? and password = ?";
+  var sql = "SELECT * FROM Patient where EmailAddress =? and PasswordS = ?";
 
   //query
-  db.query(sql,[idNumberOrPassport,password], function(err,result){
+  db.query(sql,[email,password], function(err,result){
     if(err){
       throw err;
     }else{
        //check details
-       if (result.rows.length > 0) {
-        var fullname = result.rows[0].firstname;
+       if (result && result.length > 0) {
+        var fullname = result[0].FirstName;
         console.log(fullname + ' has Login successful!');
         //res.status(200).json({ message: 'Login successful!' });
       } else {
@@ -130,6 +130,17 @@ router.get('/api/dashboard', (req, res) => {
 //location
 router.get('/api/location', (req, res) => {
   res.sendFile("views/Location.html", { root: __dirname + "/../" });    
+});
+
+//About
+router.get("/api/about", function (req, res) {
+  res.sendFile("views/about.html", { root: __dirname + "/../" });
+});
+
+//Contact
+//About
+router.get("/api/contact", function (req, res) {
+  res.sendFile("views/contact.html", { root: __dirname + "/../" });
 });
 
 //booking_reason

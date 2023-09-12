@@ -1,157 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Request Medication</title>
-<style>
-    body {
-        font-family: "Helvetica Neue", sans-serif;
-        background-color: #f5f5f5;
-        margin: 0;
-        padding: 0;
-    }
+    <title>Signup Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #50C878; /* Replace with your image path */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
 
-    .container {
-        max-width: 600px;
-        margin: 0 auto;
-        background-color: #fff;
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
+        .login-container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 400px; /* Increase the width */
+            text-align: center;
+        }
 
-    h2 {
-        color: #4CAF50;
-        margin-bottom: 20px;
-    }
+        .login-container h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
 
-    label {
-        display: block;
-        margin-top: 15px;
-        font-weight: bold;
-    }
+        .login-input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px; /* Increase the margin */
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
 
-    input[type="text"] {
-        width: 100%;
-        padding: 12px;
-        margin-top: 5px;
-        border: 2px solid #ccc;
-        border-radius: 5px;
-    }
+        .login-button {
+            background-color: #3d7d30;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 15px 20px; /* Increase the padding */
+            cursor: pointer;
+            font-size: 16px;
+        }
 
-    button {
-        background-color: #4CAF50;
-        color: #fff;
-        border: none;
-        padding: 12px 25px;
-        margin-top: 20px;
-        cursor: pointer;
-        border-radius: 5px;
-    }
+        .login-button:hover {
+            background-color: #50C878;
+        }
 
-    button:hover {
-        background-color: #0056b3;
-    }
+        /* Background for the login page */
+        .login-bg {
+            background-image: url('login-background.jpg'); /* Replace with your login page background image */
+            background-size: cover;
+            background-position: center;
+        }
 
-    .hidden {
-        display: none;
-    }
+        header {
+            background-color: #50C878;
+            text-align: center; /* Center the text */
+            padding: 35px 0; /* Adjust the top and bottom padding */
+            position: relative;
+            z-index: 1;
+        }
 
-    #file-display {
-        margin-top: 30px;
-    }
+        nav {
+            position: absolute;
+            top: 30px;
+            right: 0;
+        }
 
-    #patient-file-content {
-        background-color: #fff;
-        padding: 20px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-    }
-
-    p {
-        margin: 10px 0;
-    }
-
-    h3,
-    h4 {
-        margin-top: 20px;
-    }
-
-    a {
-        text-decoration: none;
-        color: #ffffff;
-        font-weight: bold;
-    }
-
-    a:hover {
-        text-decoration: underline;
-    }
-
-    /* ... (previous CSS rules) */
-
-    /* Style the "Request Medication" button */
-    #request-medication-button {
-        text-align: center;
-        margin-top: 20px;
-    }
-
-    #request-medication {
-        display: inline-block;
-        padding: 12px 25px;
-        background-color: #4CAF50;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        text-decoration: none;
-        font-weight: bold;
-        transition: background-color 0.3s;
-    }
-
-    #request-medication:hover {
-        background-color: #0056b3;
-    }
-</style>
-
+        nav a {
+            text-decoration: none;
+            color: white;
+            margin: 0 20px;
+            padding: 5px 10px; /* Add padding to make the clickable area larger */
+        }
+    </style>
 </head>
-
-
-<body>
-    <div class="container">
-        <h2>Sign Up</h2>
-        <!-- Input for First Name -->
-        <form action="/api/signup" method="post">
-            <label for="first-name">Enter your First Name:</label>
-            <input type="text" id="first-name" name="firstName" required>
-        
-            <!-- Input for Last Name -->
-            <label for="last-name">Enter your Last Name:</label>
-            <input type="text" id="last-name" name="lastName" required>
-        
-            <!-- Input for Residential Address -->
-            <label for="residential-address">Enter your Residential Address:</label>
-            <input type="text" id="residential-address" name="residentialAddress" required>
-        
-            <!-- Input for ID Number/Passport Number -->
-            <label for="id-number">Enter your 13-digit ID Number/Passport number:</label>
-            <input type="text" id="id-number2" name="idNumberOrPassport" maxlength="13" required pattern="[0-9]{13}">
-        
-            <!-- Input for Email Address -->
-            <label for="email">Enter your Email Address:</label>
-            <input type="text" id="email" name="emailAddress" maxlength="255" required>
-        
-            <!-- Confirm Email Address -->
-            <label for="confirm-email">Password:</label>
-            <input type="text" id="confirm-email" name="password" required>
-        
-            <!-- Submit Button -->
-            <button type="submit" id="sign-up-button">SIGN UP</button>
+<body class="login-bg">
+  
+    <div class="login-container">
+        <h2>Sign up</h2>
+        <form action="/api/signup" method="POST">
+            <div class="form-group">
+                <input type="text" class="login-input" id="firstName" name="firstName" placeholder="First Name" required>
+            </div>
+            <div class="form-group">
+                <input type="text" class="login-input" id="lastName" name="lastName" placeholder="Last Name" required>
+            </div>
+            <div class="form-group">
+                <input type="text" class="login-input" id="residentialAddress" name="residentialAddress" placeholder="Residential Address" required>
+            </div>
+            <div class="form-group">
+                <input type="text" class="login-input" id="idNumber" name="idNumber" placeholder="13-digit ID Number/Passport" required>
+            </div>
+            <div class="form-group">
+                <input type="email" class="login-input" id="email" name="email" placeholder="Email Address" required>
+            </div>
+            <div class="form-group">
+                <input type="email" class="login-input" id="confirmEmail" name="confirmEmail" placeholder="Confirm Email Address" required>
+            </div>
+            <div class="form-group">
+                <input type="password" class="login-input" id="password" name="password" placeholder="Password" required>
+            </div>
+            <button type="submit" class="login-button">Signup</button>
         </form>
-    
     </div>
+
+    <script>
+        // Add JavaScript validation or functionality as needed
+    </script>
 </body>
-
-
 </html>

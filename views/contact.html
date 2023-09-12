@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>HTML Table Example</title>
+  <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('clinic.jpg'); /* Replace with your image path */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        header {
+            background-color: #50C878;
+            text-align: right;
+            padding: 35px 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        nav {
+            position: absolute;
+            top: 30px;
+            right: 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            margin: 0 20px;
+            padding: 5px 10px; /* Add padding to make the clickable area larger */
+        }
+
+        .centered-div {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(90, 200, 120, 0.9); /* Transparent green background */
+            padding: 20px;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .centered-div h2 {
+            color: white;
+            font-size: 2.5em;
+        }
+
+        .buttons {
+            margin-top: 20px;
+        }
+
+        .buttons button {
+            background-color: #3d7d30;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        p {
+            margin: 20px 0;
+            color: white;
+            font-size: 1.9em;
+        }
+
+        /* Style for the active link */
+        .active-link {
+            background-color: #3d7d30 !important; /* Darker background color for active link */
+        }
+
+        /* Style for the table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: rgba(255, 255, 255, 0.9); /* Transparent white background for the table */
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #50C878;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #50C878;
+            color: white;
+        }
+		 tr.region-row {
+            background-color: #50C878;
+            color: white;
+            font-weight: bold;
+			text-align: center; /* Center text horizontally */
+            vertical-align: middle; /* Center text vertically */
+			justify-content: center;
+            align-items: center;
+       
+    </style>
+</head>
+
+<body>
+ <header>
+        <nav>
+            <a href="/" >HOME</a>
+            <a href="/api/about" >ABOUT</a>
+            <a href="dashboard.html" >SERVICES</a>
+            <a href="/api/contact" class="active-link">CONTACT</a>
+        </nav>
+    </header>
+    <table>
+        <tr>
+            <th>CLINIC and ADDRESS</th>
+            <th>MOBILE NUMBERS</th>
+            <th>TELEPHONE and EXT</th>
+            <th>CLINIC TIMES</th>
+        </tr>
+        <tr class="region-row">
+            <td colspan="4">Region 1</td>
+        </tr>
+        <!-- Add your data rows here, formatting as needed -->
+    <tr>
+            <td>Rosslyn Clinic (Next to Police Station)                                       
+Piet Rautenbach St, Rosslyn
+Mobile Unit to Rosslyn Clinic
+</td>
+            <td>CCHN Lindiwe Mabidikama
+082 921 5715
+or
+CCHN Rose Mametsa
+082 666 0506
+</td>
+            <td>012 358 9548 Lindiwe
+/ 9544 / 9548 / 9562
+012 358 9590 Rose
+</td>
+            <td>Weekdays:
+07:30 – 16:00
+and on Saturdays:
+08:00 – 13:00
+</td>
+        </tr>
+        <tr>
+            <td>Karenpark Clinic    
+cnr Heinrich Ave and 1st Avenue,
+Karenpark
+</td>
+            <td>CCHN Patricia Mothupi
+081 417 7782
+</td>
+            <td>012 358 9555 Patricia
+012 358 9105
+</td>
+            <td>Weekdays:
+07:30 – 16:00
+and on Saturdays:
+08:00 – 13:00
+</td>
+        </tr>
+		<tr class="region-row">
+            <td colspan="4">Region 2</td>
+        </tr>
+        <tr>
+            <td>Doornpoort Clinic      
+Cnr Dr vd Merwe and Cottonwood St, Doornpoort
+</td>
+            <td>CCHN Tiny Makgeta
+072 146 6212
+082 657 7168
+</td>
+            <td>012 358 5300
+/5267 
+</td>
+            <td>Weekdays:
+07:30 – 16:00
+</td>
+        </tr>
+		<tr class="region-row">
+            <td colspan="4">Region 3</td>
+        </tr>
+        <tr>
+            <td>FF Ribeiro Clinic
+Cnr Madiba and Sisulu St, Pretoria
+</td>
+            <td>CCHN Elizabeth Groom (Lizzy)
+083 692 9399
+</td>
+            <td>012 358 8756 Liz / 8770</td>
+            <td>Weekdays:
+07:30 – 16:00
+and on Saturdays:
+08:00 – 13:00
+</td>
+        </tr>
+		 <tr>
+            <td>Lotus Gardens Clinic
+Cnr Bergamot and Anthesis St,
+Lotus Gardens
+</td>
+            <td>CCHN Maria Khobo
+078 365 3302
+</td>
+            <td>012 358 2141  Maria
+/2217 / 2205 / 2211
+</td>
+            <td>Weekdays:
+07:30 – 16:00
+and on Saturdays:
+08:00 – 13:00
+</td>
+        </tr>
+        <tr>
+            <td>Atteridgeville Clinic                         
+Ramohoeba Square, Mareka St,
+Atteridgeville
+</td>
+            <td>CCHN Wendy Lengweng 072 337 6681</td>
+            <td>012 358 3922 Wendy
+/ 3923
+/3921 / 3920
+</td>
+            <td>Weekdays:
+07:30 – 16:00
+and on Saturdays:
+08:00 – 13:00
+</td>
+        </tr>
+		<tr>
+            <td>Saulsville Clinic
+33 Sekhu St, Saulsville
+</td>
+            <td>CCHN Mphonyana Moloi
+083 670 5467
+</td>
+            <td>012 358 3362 /
+3359 / 3344 / 3357
+</td>
+            <td>Weekdays:
+07:30 – 16:00
+</td>
+        </tr>
+		<tr>
+            <td>Gazankulu Clinic         
+Maunde St, Saulsville
+</td>
+            <td>CCHN Fatima Matemane
+072 216 1796
+</td>
+            <td>012 358 2011 Fatima
+/ 1655 / 1845
+</td>
+            <td>Weekdays:
+07:30 – 16:00
+and on Saturdays:
+08:00 – 13:00
+</td>
+        </tr>
+		<tr>
+            <td>Phomolong Clinic         
+Cnr 18th and Schurveberg St, Atteridgeville
+</td>
+            <td>CCHN Marion Matsemela
+082 560 4287
+</td>
+            <td>012 358 0717  Marion
+/ 9989
+</td>
+            <td>Weekdays:
+07:30 – 16:00
+and on Saturdays:
+08:00 – 13:00
+</td>
+        </tr>
+		<tr>
+            <td>Folang Clinic
+157 Es’kia Mphahlele Drive, Pretoria
+</td>
+            <td>CCHN Mokgadi Ramaphoko
+082 487 2525
+</td>
+            <td>012 358 0274 Mokgadi
+/ 0274 / 0338
+/ 0480 (TB)
+</td>
+            <td>Weekdays:
+07:30 – 16:00
+</td>
+        </tr>
+		<tr>
+            <td>Danville Clinic          
+10 Trans Oranje Road, Danville
+</td>
+            <td>CCHN Themba Nzima
+079 873 9760
+</td>
+            <td>012 358 7418 Themba
+7423 / 7421 / 7470
+</td>
+            <td>Weekdays:
+07:30 – 16:00
+and on Saturdays:
+08:00 – 13:00
+</td>
+        </tr>
+		<tr>
+            <td>Hercules Clinic
+Cnr Taljaard and Ribbon St, Hercules
+</td>
+            <td>CCHN Delia Mathibe
+082 394 5865
+</td>
+            <td>012 358 1787 Delia
+/ 1784 Reception
+</td>
+            <td>Weekdays:
+07:30 – 16:00
+and on Saturdays:
+08:00 – 13:00
+</td>
+        <tr class="region-row">
+	
+            <td colspan="4">Region 4</td>
+        </tr>
+        <tr>
+            <td>Data 1, Row 4</td>
+            <td>Data 2, Row 4</td>
+            <td>Data 3, Row 4</td>
+            <td>Data 4, Row 4</td>
+        </tr>
+		 <tr>
+            <td>Data 1, Row 4</td>
+            <td>Data 2, Row 4</td>
+            <td>Data 3, Row 4</td>
+            <td>Data 4, Row 4</td>
+        </tr>
+		 <tr>
+            <td>Data 1, Row 4</td>
+            <td>Data 2, Row 4</td>
+            <td>Data 3, Row 4</td>
+            <td>Data 4, Row 4</td>
+        </tr>
+		 <tr>
+            <td>Data 1, Row 4</td>
+            <td>Data 2, Row 4</td>
+            <td>Data 3, Row 4</td>
+            <td>Data 4, Row 4</td>
+        </tr>
+		 <tr>
+            <td>Data 1, Row 4</td>
+            <td>Data 2, Row 4</td>
+            <td>Data 3, Row 4</td>
+            <td>Data 4, Row 4</td>
+        </tr>
+		 <tr>
+            <td>Data 1, Row 4</td>
+            <td>Data 2, Row 4</td>
+            <td>Data 3, Row 4</td>
+            <td>Data 4, Row 4</td>
+        </tr>
+		<tr class="region-row">
+            <td colspan="4">Region 5</td>
+        </tr>
+        <tr>
+            <td>Data 1, Row 4</td>
+            <td>Data 2, Row 4</td>
+            <td>Data 3, Row 4</td>
+            <td>Data 4, Row 4</td>
+        </tr>
+		 <tr>
+            <td>Data 1, Row 4</td>
+            <td>Data 2, Row 4</td>
+            <td>Data 3, Row 4</td>
+            <td>Data 4, Row 4</td>
+        </tr>
+		 <tr>
+            <td>Data 1, Row 4</td>
+            <td>Data 2, Row 4</td>
+            <td>Data 3, Row 4</td>
+            <td>Data 4, Row 4</td>
+        </tr>
+		<tr class="region-row">
+            <td colspan="4">Region 6</td>
+        </tr>
+        <tr>
+            <td>Data 1, Row 4</td>
+            <td>Data 2, Row 4</td>
+            <td>Data 3, Row 4</td>
+            <td>Data 4, Row 4</td>
+        </tr>
+		<tr>
+            <td>Data 1, Row 4</td>
+            <td>Data 2, Row 4</td>
+            <td>Data 3, Row 4</td>
+            <td>Data 4, Row 4</td>
+        </tr>
+		<tr>
+            <td>Data 1, Row 4</td>
+            <td>Data 2, Row 4</td>
+            <td>Data 3, Row 4</td>
+            <td>Data 4, Row 4</td>
+        </tr>
+		<tr>
+            <td>Data 1, Row 4</td>
+            <td>Data 2, Row 4</td>
+            <td>Data 3, Row 4</td>
+            <td>Data 4, Row 4</td>
+        </tr>
+		<tr>
+            <td>Data 1, Row 4</td>
+            <td>Data 2, Row 4</td>
+            <td>Data 3, Row 4</td>
+            <td>Data 4, Row 4</td>
+        </tr>
+		<tr class="region-row">
+            <td colspan="4">Region 7</td>
+        </tr>
+        <tr>
+            <td>Data 1, Row 4</td>
+            <td>Data 2, Row 4</td>
+            <td>Data 3, Row 4</td>
+            <td>Data 4, Row 4</td>
+        </tr>
+        <tr>
+            <td>Data 1, Row 4</td>
+            <td>Data 2, Row 4</td>
+            <td>Data 3, Row 4</td>
+            <td>Data 4, Row 4</td>
+        </tr>
+    </table>
+	 <script>
+        // JavaScript to toggle the active class on navigation links
+        const navLinks = document.querySelectorAll('nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.forEach(link => link.classList.remove('active-link'));
+                link.classList.add('active-link');
+            });
+        });
+    </script>
+</body>
+</html>

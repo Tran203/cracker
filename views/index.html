@@ -9,7 +9,7 @@
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-            background-image: url('clinic.jpg'); /* Replace with your image path */
+            background-image: url('./clinic.jpg'); /* Replace with your image path */
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -34,6 +34,15 @@
             color: white;
             margin: 0 20px;
             padding: 5px 10px; /* Add padding to make the clickable area larger */
+        }
+
+        .logo {
+            position: absolute;
+            top: 30px;
+            left: 40px;
+            font-weight: bold; /* Make the logo bold */
+            color: white; /* Set the color to white */
+            font-size: 1.5em; /* Adjust the font size as needed */
         }
 
         .centered-div {
@@ -65,6 +74,10 @@
             cursor: pointer;
         }
 
+        .buttons button:hover {
+            background-color: #50C878;
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -81,52 +94,29 @@
         .active-link {
             background-color: #3d7d30 !important; /* Darker background color for active link */
         }
-
-        .buttons {
-            margin-top: 20px;
-        }
-
-        .form-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .form-container form {
-            margin: 0;
-        }
-
-        .form-container button {
-            margin: 0 10px;
-        }
     </style>
 </head>
 <body>
     <header>
+        <label class="logo">Q-MIN</label>
         <nav>
-            <a href="#home" class="active-link">HOME</a>
-            <a href="#about">ABOUT</a>
-            <a href="#services">SERVICES</a>
-            <a href="#contact">CONTACT</a>
+            <a href="/" class="active-link">HOME</a>
+            <a href="/api/about">ABOUT</a>
+            <a href="dashboard.html">SERVICES</a>
+            <a href="/api/contact">CONTACT</a>
         </nav>
     </header>
 
     <div class="centered-div">
-        <h2>QUEUE MANAGEMENT SYSTEM
-            FOR CLINICS</h2>
-        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing
-            elit, sed diam nonummy nibh euismod tincidunt
-            ut laoreet dolore magna aliquam erat volutpat.</p>
-            <div class="buttons">
-                <div class="form-container">
-                    <form action="./api/login">
-                        <button type="submit">LOG IN</button>
-                    </form>
-                    <form action="./api/signup">
-                        <button type="submit">SIGN UP</button>
-                    </form>
-                </div>
-            </div>
+        <h2>YOUR NUMBER ONE QUEUE MINIMISING SOLUTION</h2>
+        <p>Q-MIN aims to reduce the long queues experienced municipality clinics located in the City of Tshwane.
+            The virtual queue system not only generates a queue number for you, but it gives you access
+            to identifying neighbouring municipality clinics that are not full and offer the health services
+            you require, Saving your time and enhancing service delivery</p>
+        <div class="buttons">
+            <a href="/api/login"><button>LOG IN</button></a> <!-- Add missing </a> here -->
+            <a href="/api/signup"><button>SIGN UP</button></a>
+        </div>
     </div>
 
     <script>
