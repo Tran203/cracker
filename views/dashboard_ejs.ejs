@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Dashboard</title>
+    <style>
+        /* Style for the patient dashboard */
+        .dashboard {
+            text-align: center;
+            margin: 20px auto;
+            position: relative; /* Add this to position the pop-up relative to the dashboard */
+        }
+
+        /* Style for rows to position buttons */
+        .row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        /* Common button style */
+        .button {
+            flex-grow: 1;
+            padding: 15px 0;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            margin: 10px;
+            color: white;
+            border-radius: 10px;
+            outline: none;
+            transition: background-color 0.3s ease;
+            font-family: Arial, sans-serif;
+            text-decoration: none;
+            /* Remove underline */
+        }
+
+        /* Style for "Book Appointment" button */
+        .book-appointment {
+            background-color: #50C878;
+            /* Green color */
+        }
+
+        /* Style for "Medication" button */
+        .medication {
+            background-color: #ebeced;
+            /* Blue color */
+            color: black;
+        }
+
+        /* Style for "Emergency" button */
+        .emergency {
+            background-color: #50C878;
+            /* Red color */
+        }
+
+        /* Style for "GBV" button */
+        .gbv {
+            background-color: #ebeced;
+            /* Orange color */
+            color: black;
+        }
+
+        /* Style for "FAQ's" button */
+        .faqs {
+            flex-grow: 3;
+            background-color:#50C878;
+            /* Yellow color */
+        }
+
+        /* Hover effect */
+        .button:hover {
+            background-color: #333;
+            /* Dark background on hover */
+        }
+        /* Styles for the pop-up card */
+        .popup-card {
+            position: absolute; /* Position the pop-up absolutely within the dashboard */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            z-index: 9999;
+            display: none; /* Hide the pop-up initially */
+        }
+
+        /* Styles for the close button */
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+        header {
+            background-color: #50C878;
+            text-align: right;
+            padding: 35px 40px;
+            position: relative;
+            z-index: 1;
+        }
+        nav {
+            position: absolute;
+            top: 30px;
+            right: 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            margin: 0 20px;
+            padding: 5px 10px; /* Add padding to make the clickable area larger */
+        }
+
+        .logo {
+            position: absolute;
+            top: 30px;
+            left: 40px;
+            font-weight: bold; /* Make the logo bold */
+            color: white; /* Set the color to white */
+            font-size: 1.5em; /* Adjust the font size as needed */
+        }
+        .dashboard {
+            text-align: center;
+            margin-top: 50px; /* Adjust the top margin */
+        }
+        .active-link {
+            background-color: #3d7d30 !important; /* Darker background color for active link */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <label class="logo">Q-MIN</label>
+        <nav>
+            <a href="/">HOME</a>
+            <a href="/api/about">ABOUT</a>
+            <a href="/api/dashboard" class="active-link">SERVICES</a>
+            <a href="/api/contact" >CONTACT</a>
+        </nav>
+    </header>
+
+    <div class="dashboard">
+        <div class="row">
+            <a href="/api/que_reason" class="button book-appointment">Request A Queue Ticket</a>
+            <a href="/api/request_medication" class="button medication">Medication</a>
+        </div>
+        <div class="row">
+            <button class="button emergency">Emergency</button>
+        </div>
+        <div class="row">
+            <button class="button faqs">FAQ's</button>
+        </div>
+        
+        <!-- Pop-up card for the message -->
+        <div class="popup-card">
+            <span class="close-button" onclick="closePopup()">X</span>
+            <h2>Your Virtual File</h2>
+            <p>Your virtual file has been created. File Number: <span id="fileNumber"></span></p>
+        </div>
+    </div>
+    
+    <script>
+        // Function to display the pop-up message
+        function displayPopup() {
+            // Get the idNumberOrPassport value passed from Express.js
+            var idNumberOrPassport = "<%= idNumberOrPassport %>";
+            
+            // Use the idNumberOrPassport as the file number
+            var fileNumber = idNumberOrPassport; // You can customize this as needed
+            
+            // Display the pop-up card
+            var popupCard = document.querySelector('.popup-card');
+            var fileNumberSpan = document.getElementById('fileNumber');
+            fileNumberSpan.textContent = fileNumber;
+            popupCard.style.display = 'block';
+        }
+        
+        // Function to close the pop-up
+        function closePopup() {
+            var popupCard = document.querySelector('.popup-card');
+            popupCard.style.display = 'none';
+        }
+        
+        // Call the displayPopup function when the page loads
+        window.onload = displayPopup;
+        </script>
+        
+    
+    </body>
+    </html>

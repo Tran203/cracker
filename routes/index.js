@@ -3,6 +3,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mysql = require('mysql');
+const ejs = require("ejs");
+const path = require("path");
 
 //database
 /*const db = mysql.createConnection({
@@ -33,6 +35,23 @@ router.use(cors());
 //Homepage
 router.get("/", function (req, res) {
     res.sendFile("views/index.html", { root: __dirname + "/../" });
+});
+
+//get the file
+router.get("/api/file", function (req, res) {
+  var idNumberOrPassport = req.query.idNumberOrPassport;
+  // Query the database to fetch achievements for the given alumni_id
+  var sql = "SELECT * FROM File WHERE idNumberOrPassport = ?";
+  var values = [idNumberOrPassport];
+
+  client.query(sql, values, function (err, result) {
+      if (err) {
+          console.error(err);
+          res.send("An error occurred while fetching achievements.");
+      } else {
+          res.render("alumni/achievements", { file: result.rows });
+      }
+  });
 });
 
 //Login
@@ -116,7 +135,21 @@ router.post('/api/signup', (req, res) => {
       }
 
       console.log('Data inserted into the database');
-      res.sendFile("views/dashboard.html", { root: __dirname + "/../" });
+      var data = {
+        idNumberOrPassport: idNumberOrPassport
+    };
+      //res.sendFile("views/dashboard.html", { root: __dirname + "/../" });
+      //res.render("views/dashboard_ejs", {idNumberOrPassport: req.query.idNumberOrPassport})
+      
+      ejs.renderFile(path.join(__dirname, "../views/dashboard_ejs.ejs"), data, function (err, html) {
+        if (err) {
+            console.error(err);
+            res.send("An error occurred.");
+        } else {
+            res.send(html); // Send the rendered HTML
+        }
+    });
+   
     }
   );
 

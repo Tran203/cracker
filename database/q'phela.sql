@@ -8,6 +8,12 @@ CREATE TABLE Patient (
     PasswordS VARCHAR(255) NOT NULL
 );
 
+CREATE TABLE File(
+    IDNumberOrPassport VARCHAR(13) NOT NULL,
+    History VARCHAR(50) NOT NULL,
+    prescribtion VARCHAR(50) NOT NULL
+);
+
 CREATE TABLE Ticket (
     TicketID INT PRIMARY KEY AUTO_INCREMENT,
     TicketCode VARCHAR(20) NOT NULL,
