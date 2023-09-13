@@ -39,17 +39,20 @@ router.get("/", function (req, res) {
 
 //get the file
 router.get("/api/file", function (req, res) {
-  var idNumberOrPassport = req.query.idNumberOrPassport;
+  //var idNumberOrPassport = req.query.idNumberOrPassport;
+  var idNumberOrPassport = 123;
   // Query the database to fetch achievements for the given alumni_id
-  var sql = "SELECT * FROM File WHERE idNumberOrPassport = ?";
+  var sql = "SELECT * FROM Patient WHERE IDNumberOrPassport = ?";
   var values = [idNumberOrPassport];
 
-  client.query(sql, values, function (err, result) {
+  db.query(sql, values, function (err, result) {
     if (err) {
       console.error(err);
       res.send("An error occurred while fetching achievements.");
     } else {
-      res.render("../views/", { file: result.rows });
+      fileinfo = result[0];
+      console.log(fileinfo);
+      res.render("../views/request.ejs", { fileInfo: result[0] });
     }
   });
 });

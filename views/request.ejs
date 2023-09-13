@@ -1,176 +1,237 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html> 
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Request Medication</title>
-    <style>
-        body {
-            font-family: "Helvetica Neue", sans-serif;
-            background-color: #f5f5f5;
-            margin: 0;
-            padding: 0;
-        }
+<html lang="en"> 
 
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
+<head> 
 
-        h2 {
-            color: #4CAF50;
-            margin-bottom: 20px;
-        }
+    <meta charset="UTF-8"> 
 
-        label {
-            display: block;
-            margin-top: 15px;
-            font-weight: bold;
-        }
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 
-        input[type="text"] {
-            width: 100%;
-            padding: 12px;
-            margin-top: 5px;
-            border: 2px solid #ccc;
-            border-radius: 5px;
-        }
+    <title>Request Medication</title> 
 
-        button {
-            background-color: #4CAF50;
-            color: #fff;
-            border: none;
-            padding: 12px 25px;
-            margin-top: 20px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
+    <style> 
+        
+        body { 
 
-        button:hover {
-            background-color: #0056b3;
-        }
+            font-family: "Helvetica Neue", sans-serif; 
 
-        .hidden {
-            display: none;
-        }
+            background-color: #f5f5f5; 
 
-        #file-display {
-            margin-top: 30px;
-        }
+            margin: 0; 
 
-        #patient-file-content {
-            background-color: #fff;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-        }
+            padding: 0; 
 
-        p {
-            margin: 10px 0;
-        }
+        } 
 
-        h3,
-        h4 {
-            margin-top: 20px;
-        }
+        nav {
+        background-color: rgb(20, 223, 102);
+        height: 60px;
+        width: 100%;
+    }
 
-        a {
-            text-decoration: none;
-            color: #4CAF50;
-            font-weight: bold;
-        }
+    label.logo {
+        color: white;
+        font-size: 35px;
+        line-height: 80px;
+        padding: 0 100px;
+        font-weight: bold;
+    }
 
-        a:hover {
-            text-decoration: underline;
-        }
+    nav ul {
+        float: right;
+        margin-right: 20px;
+    }
 
-        /* Style the "Request Medication" button */
-        #request-medication-button {
-            text-align: center;
-            margin-top: 20px;
-        }
+    nav ul li {
+        display: inline-block;
+        line-height: 80px;
+        margin: 0 5px;
+        position: relative; /* Added to position dropdown */
+    }
 
-        #request-medication {
-            display: inline-block;
-            padding: 12px 25px;
-            background-color: #4CAF50;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background-color 0.3s;
-        }
+    nav ul li a {
+        color: white;
+        font-size: 17px;
+        text-transform: uppercase;
+        padding: 7px 13px;
+        border-radius: 3px;
+    }
 
-        #request-medication:hover {
-            background-color: #0056b3;
-        }
-    </style>
-</head>
+ 
 
-<body>
-    <div class="container">
-        <h2>Request Medication</h2>
-        <!-- Display patient file -->
-        <div id="file-display" class="hidden">
-            <div id="patient-file-content">
-                <h3>Patient File</h3>
-                <!-- Content will be generated using JavaScript -->
-            </div>
-        </div>
-        <!-- Request Medication button (as a hyperlink) -->
-        <div id="request-medication-button" class="hidden">
-            <a href="/api/get_medication" id="request-medication">Request Medication</a>
-        </div>
-        <!-- Medication Request Form -->
-        <form id="medication-request-form" class="hidden">
-            <label for="medication">Select Medication:</label>
-            <input list="medications" id="medication" name="medication" required>
-            <datalist id="medications">
-                <option value="Medication 1">
-                <option value="Medication 2">
-                <option value="Medication 3">
-                <!-- Add more medication options as needed -->
-            </datalist>
-            <button type="submit">Submit Request</button>
-        </form>
-    </div>
-    <script>
-        const fileDisplay = document.getElementById("file-display");
-        const patientFileContent = document.getElementById("patient-file-content");
-        const requestMedicationButton = document.getElementById("request-medication-button");
-        const medicationRequestForm = document.getElementById("medication-request-form");
+        .container { 
 
-        // Check if fileInfo is provided and not empty (Replace with actual data from Express)
-        const fileInfo = [];
-        if (fileInfo.length > 0) {
-            // Display the patient file
-            fileDisplay.classList.remove("hidden");
-            // Show the "Request Medication" button
-            requestMedicationButton.classList.remove("hidden");
-        }
+            max-width: 600px; 
 
-        // Event listener for the "Request Medication" button click
-        requestMedicationButton.addEventListener("click", function () {
-            // Show the medication request form
-            medicationRequestForm.classList.remove("hidden");
-        });
+            margin: 0 auto; 
 
-        // Event listener for medication request form submission
-        medicationRequestForm.addEventListener("submit", function (e) {
-            e.preventDefault();
-            // Get selected medication from the form input
-            const selectedMedication = medicationRequestForm.elements.medication.value;
-            // Process the medication request as needed (e.g., send to server)
-            // Display a success message or handle the request accordingly
-        });
-    </script>
-</body>
+            background-color: #fff; 
 
-</html>
+            padding: 30px; 
+
+            border-radius: 10px; 
+
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+
+        } 
+
+ 
+
+        h2 { 
+
+            color: #4CAF50; 
+            margin-bottom: 20px; 
+
+} 
+
+
+
+label { 
+
+    display: block; 
+
+    margin-top: 15px; 
+
+    font-weight: bold; 
+
+} 
+
+
+
+select { 
+
+    width: 100%; 
+
+    padding: 12px; 
+
+    margin-top: 5px; 
+
+    border: 2px solid #ccc; 
+
+    border-radius: 5px; 
+
+} 
+
+button[type="submit"] { 
+
+    background-color: #4CAF50; 
+
+    color: #fff; 
+
+    border: none; 
+
+    padding: 12px 25px; 
+
+    margin-top: 20px; 
+
+    cursor: pointer; 
+
+    border-radius: 5px; 
+
+} 
+button[type="submit"]:hover { 
+
+background-color: #0056b3; 
+
+} 
+
+</style> 
+
+</head> 
+
+<body> 
+    <header>
+        <nav>
+            <label class="logo">Q-MIN</label>
+            <ul>
+                <li class="dropdown"><a href="LandingPage.html">HOME</a>
+        
+                </li>
+                <li class="dropdown"><a href="dashboard.html">DASHBOARD</a>
+        
+                </li>
+                <li class="dropdown"><a href="#">SERVICE</a>
+        
+                </li>
+                <li class="dropdown"><a href="#">CONTACT</a>
+        
+                </li>
+                <li class="dropdown">
+                    <a href="#">ABOUT</a>
+        
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+<div class="container"> 
+
+<h2>Request Medication</h2> 
+
+<!-- Check if 'C' is 'Y' --> 
+
+<% if (fileInfo.C === 'Y') { %> 
+
+<!-- Display patient file content based on the database columns --> 
+
+<h3>Patient File</h3> 
+
+<p><strong>First Name:</strong> <%= fileInfo.FirstName %></p> 
+
+<p><strong>Last Name:</strong> <%= fileInfo.LastName %></p> 
+
+<p><strong>Residential Address:</strong> <%= fileInfo.ResidentialAddress %></p> 
+
+<p><strong>ID Number/Passport:</strong> <%= fileInfo.IDNumberOrPassport %></p> 
+
+<p><strong>Email Address:</strong> <%= fileInfo.EmailAddress %></p>
+
+<p><strong>Medical History:</strong> Patient has a history of hypertension.</p>
+
+<p><strong>Prescribed Medication:</strong> Lisinopril (10mg) for hypertension.</p>
+
+<!-- Add more columns as needed --> 
+
+ 
+
+<!-- Next page button --> 
+
+<div id="request-medication-button"> 
+
+    <a href="/api/get_medication" id="request-medication">Request Medication</a> 
+
+</div> 
+
+<% } else { %> 
+    <!-- Display form for choosing/requesting basic medicine --> 
+
+    <h3>Choose/Request Basic Medicine</h3> 
+
+    <form action="/submit_medicine_request" method="post"> 
+
+        <!-- Add your form fields for choosing/requesting basic medicine --> 
+
+        <label for="medicine">Select Medicine:</label> 
+
+        <select id="medicine" name="medicine"> 
+
+            <option value="Medicine 1">Medicine 1</option> 
+
+            <option value="Medicine 2">Medicine 2</option> 
+
+            <!-- Add more medicine options as needed --> 
+
+        </select> 
+
+        <button type="submit">Submit Request</button> 
+
+    </form> 
+
+<% } %> 
+
+</div> 
+
+</body> 
+
+</html> 
