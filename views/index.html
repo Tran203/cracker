@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLINIC</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('./clinic.jpg'); /* Replace with your image path */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        header {
+            background-color: #50C878;
+            text-align: right;
+            padding: 35px 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        nav {
+            position: absolute;
+            top: 30px;
+            right: 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            margin: 0 20px;
+            padding: 5px 10px; /* Add padding to make the clickable area larger */
+        }
+
+        .logo {
+            position: absolute;
+            top: 30px;
+            left: 40px;
+            font-weight: bold; /* Make the logo bold */
+            color: white; /* Set the color to white */
+            font-size: 1.5em; /* Adjust the font size as needed */
+        }
+
+        .centered-div {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(90, 200, 120, 0.9); /* Transparent green background */
+            padding: 20px;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .centered-div h2 {
+            color: white;
+            font-size: 2.5em;
+        }
+
+        .buttons {
+            margin-top: 20px;
+        }
+
+        .buttons button {
+            background-color: #3d7d30;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+
+        .buttons button:hover {
+            background-color: #50C878;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        p {
+            margin: 20px 0;
+            color: white;
+            font-size: 1.9em;
+        }
+
+        /* Style for the active link */
+        .active-link {
+            background-color: #3d7d30 !important; /* Darker background color for active link */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <label class="logo">Q-MIN</label>
+        <nav>
+            <a href="/" class="active-link">HOME</a>
+            <a href="/api/about">ABOUT</a>
+            <a href="dashboard.html">SERVICES</a>
+            <a href="/api/contact">CONTACT</a>
+        </nav>
+    </header>
+
+    <div class="centered-div">
+        <h2>YOUR NUMBER ONE QUEUE MINIMISING SOLUTION</h2>
+        <p>Q-MIN aims to reduce the long queues experienced municipality clinics located in the City of Tshwane.
+            The virtual queue system not only generates a queue number for you, but it gives you access
+            to identifying neighbouring municipality clinics that are not full and offer the health services
+            you require, Saving your time and enhancing service delivery</p>
+        <div class="buttons">
+            <a href="/api/login"><button>LOG IN</button></a> <!-- Add missing </a> here -->
+            <a href="/api/signup"><button>SIGN UP</button></a>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript to toggle the active class on navigation links
+        const navLinks = document.querySelectorAll('nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.forEach(link => link.classList.remove('active-link'));
+                link.classList.add('active-link');
+            });
+        });
+    </script>
+</body>
+</html>

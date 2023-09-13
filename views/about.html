@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLINIC</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: white; /* Replace with your image path */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        header {
+            background-color: #50C878;
+            text-align: right;
+            padding: 35px 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        nav {
+            position: absolute;
+            top: 30px;
+            right: 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            margin: 0 20px;
+            padding: 5px 10px; /* Add padding to make the clickable area larger */
+        }
+
+        .logo {
+            position: absolute;
+            top: 30px;
+            left: 40px;
+            font-weight: bold; /* Make the logo bold */
+            color: white; /* Set the color to white */
+            font-size: 1.5em; /* Adjust the font size as needed */
+        }
+
+        .slider-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-40%, -40%);
+			height:60%;
+			max-width:1200px;
+            background-color: rgba(90, 200, 120, 0.7); /* Transparent green background */
+            padding: 10px;
+            text-align: center;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 1s ease-in-out;
+        }
+
+        .slider div {
+            flex: 0 0 100%;
+            text-align: center;
+            padding: 1px;
+        }
+
+        .slider h2 {
+            color: white;
+            font-size: 2.5em;
+        }
+
+        .slider p {
+            margin: 20px 0;
+            color: white;
+            font-size: 1.9em;
+        }
+
+        /* Style for the active link */
+        .active-link {
+            background-color: #3d7d30 !important; /* Darker background color for active link */
+        }
+
+        /* Circles style */
+        .circles-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .circle {
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border-radius: 50%;
+            margin: 0 5px;
+        }
+
+        .current-circle {
+            background-color: #50C878;
+        }
+
+        /* Next button style */
+        .next-button {
+            cursor: pointer;
+            background-color: #3d7d30;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px 0;
+            border-radius: 5px;
+            display: block;
+            position: absolute;
+            right: 20px; /* Adjust this value to position the button as desired */
+            bottom: 20px; /* Adjust this value to position the button as desired */
+        }
+		h1{
+		color:#50C878;
+		text-align:center;
+		font-style:bold;
+		font-size:50px;
+		}
+		
+        /* Circular photo container style */
+        .photo-container {
+            display: flex;
+            justify-content: -50%;
+            align-items: center;
+            
+			
+        }
+
+        .circular-photo {
+            width: 40%; /* Adjust the size of the circular photo */
+            height: 100%; /* Adjust the size of the circular photo */
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .circular-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <label class="logo">Q-MIN</label>
+        <nav>
+            <a href="/">HOME</a>
+            <a href="/api/about">ABOUT</a>
+            <a href="#">SERVICES</a>
+            <a href="/api/contact" class="active-link">CONTACT</a>
+        </nav>
+    </header>
+    <h1>About Us</h1>
+    <div class="slider-container">
+        <div class="slider">
+            <div>
+                <h2>Mission Statement</h2>
+                <p>Our mission is to transform healthcare delivery by providing accessible, efficient, and patient-centric services through our Q-minimiser system. We are committed to improving the health and well-being of individuals in Tshwane Municipality and beyond, ensuring that every patient receives the care they deserve, when and where they need it. We strive to empower patients, support healthcare providers, and enhance the overall healthcare experience, one appointment, one queue, and one click at a time.</p>
+            </div>
+            <div>
+                <h2>Vision Statement</h2>
+                <p>Our vision is a healthcare landscape where convenience, compassion, and quality intersect seamlessly. We aspire to be the leading innovators in healthcare technology, recognized for our unwavering dedication to patient satisfaction and healthcare excellence. We envision a future where waiting times are minimized, access to medical records is effortless, and healthcare services are as diverse as the communities we serve. Together, we aim to revolutionize healthcare, forging a healthier, happier, and more connected world.</p>
+            </div>
+            <div>
+                <h2>Values</h2>
+                <p>Patient-Centric Care: We prioritize the needs, preferences, and well-being of patients in all that we do, ensuring that their healthcare experience is at the center of our focus.
+Innovation: We embrace innovation as a means to continuously improve our services, leveraging technology and creative solutions to enhance healthcare accessibility and efficiency.
+Empowerment: We empower patients by providing them with the tools and information they need to make informed decisions about their healthcare, fostering a sense of control and autonomy.
+
+
+</p>
+            </div>
+        </div>
+        <div class="circles-container">
+            <div class="circle current-circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+        </div>
+        <button class="next-button" id="nextButton">Next</button>
+    </div>
+	 <div class="photo-container">
+        <div class="circular-photo">
+            <img src="aboutphoto.jpeg" alt="Your Photo">
+        </div>
+    </div>
+
+    <script>
+        // JavaScript to handle the "Next" button click and slide to the next div
+        const nextButton = document.getElementById('nextButton');
+        const slider = document.querySelector('.slider');
+        const slides = document.querySelectorAll('.slider div');
+        const circles = document.querySelectorAll('.circle');
+        let currentIndex = 0;
+
+        nextButton.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % slides.length;
+            updateSlider();
+            updateCircles();
+        });
+
+        function updateSlider() {
+            const translateX = -currentIndex * 100;
+            slider.style.transform = `translateX(${translateX}%)`;
+        }
+
+        function updateCircles() {
+            circles.forEach((circle, index) => {
+                if (index === currentIndex) {
+                    circle.classList.add('current-circle');
+                } else {
+                    circle.classList.remove('current-circle');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

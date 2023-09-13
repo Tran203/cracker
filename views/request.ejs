@@ -1,0 +1,259 @@
+<!DOCTYPE html> 
+
+<html lang="en"> 
+
+<head> 
+
+    <meta charset="UTF-8"> 
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+    <title>Request Medication</title> 
+
+    <style> 
+        
+        body { 
+
+            font-family: "Helvetica Neue", sans-serif; 
+
+            background-color: #f5f5f5; 
+
+            margin: 0; 
+
+            padding: 0; 
+
+        } 
+
+        nav {
+        background-color: rgb(20, 223, 102);
+        height: 60px;
+        width: 100%;
+    }
+
+    label.logo {
+        color: white;
+        font-size: 35px;
+        line-height: 80px;
+        padding: 0 100px;
+        font-weight: bold;
+    }
+
+    nav ul {
+        float: right;
+        margin-right: 20px;
+    }
+
+    nav ul li {
+        display: inline-block;
+        line-height: 80px;
+        margin: 0 5px;
+        position: relative; /* Added to position dropdown */
+    }
+
+    nav ul li a {
+        color: white;
+        font-size: 17px;
+        text-transform: uppercase;
+        padding: 7px 13px;
+        border-radius: 3px;
+    }
+
+ 
+
+        .container { 
+
+            max-width: 600px; 
+
+            margin: 0 auto; 
+
+            background-color: #fff; 
+
+            padding: 30px; 
+
+            border-radius: 10px; 
+
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+
+        } 
+
+ 
+
+        h2 { 
+
+            color: #4CAF50; 
+            margin-bottom: 20px; 
+
+} 
+
+
+
+label { 
+
+    display: block; 
+
+    margin-top: 15px; 
+
+    font-weight: bold; 
+
+} 
+
+
+
+select { 
+
+    width: 100%; 
+
+    padding: 12px; 
+
+    margin-top: 5px; 
+
+    border: 2px solid #ccc; 
+
+    border-radius: 5px; 
+
+} 
+
+button[type="submit"] { 
+
+    background-color: #4CAF50; 
+
+    color: #fff; 
+
+    border: none; 
+
+    padding: 12px 25px; 
+
+    margin-top: 20px; 
+
+    cursor: pointer; 
+
+    border-radius: 5px; 
+
+} 
+button[type="submit"]:hover { 
+
+background-color: #0056b3; 
+
+} 
+
+/* Style the "Request Medication" button */
+#request-medication-button {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #request-medication {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        #request-medication:hover {
+            background-color: #0056b3;
+        }
+
+</style> 
+
+</head> 
+
+<body> 
+    <header>
+        <nav>
+            <label class="logo">Q-MIN</label>
+            <ul>
+                <li class="dropdown"><a href="LandingPage.html">HOME</a>
+        
+                </li>
+                <li class="dropdown"><a href="dashboard.html">DASHBOARD</a>
+        
+                </li>
+                <li class="dropdown"><a href="#">SERVICE</a>
+        
+                </li>
+                <li class="dropdown"><a href="#">CONTACT</a>
+        
+                </li>
+                <li class="dropdown">
+                    <a href="#">ABOUT</a>
+        
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+<div class="container"> 
+
+<h2>Request Medication</h2> 
+
+<!-- Check if 'C' is 'Y' --> 
+
+<% if (fileInfo.C === 'Y') { %> 
+
+<!-- Display patient file content based on the database columns --> 
+
+<h3>Patient File</h3> 
+
+<p><strong>First Name:</strong> <%= fileInfo.FirstName %></p> 
+
+<p><strong>Last Name:</strong> <%= fileInfo.LastName %></p> 
+
+<p><strong>Residential Address:</strong> <%= fileInfo.ResidentialAddress %></p> 
+
+<p><strong>ID Number/Passport:</strong> <%= fileInfo.IDNumberOrPassport %></p> 
+
+<p><strong>Email Address:</strong> <%= fileInfo.EmailAddress %></p>
+
+<p><strong>Medical History:</strong> Patient has a history of hypertension.</p>
+
+<p><strong>Prescribed Medication:</strong> Lisinopril (10mg) for hypertension.</p>
+
+<!-- Add more columns as needed --> 
+
+ 
+
+<!-- Next page button --> 
+
+<div id="request-medication-button"> 
+
+    <a href="/api/get_medication" id="request-medication">Request Medication</a> 
+
+</div> 
+
+<% } else { %> 
+    <!-- Display form for choosing/requesting basic medicine --> 
+
+    <h3>Choose/Request Basic Medicine</h3> 
+
+    <form action="/submit_medicine_request" method="post"> 
+
+        <!-- Add your form fields for choosing/requesting basic medicine --> 
+
+        <label for="medicine">Select Medicine:</label> 
+
+        <select id="medicine" name="medicine"> 
+
+            <option value="Medicine 1">Medicine 1</option> 
+
+            <option value="Medicine 2">Medicine 2</option> 
+
+            <!-- Add more medicine options as needed --> 
+
+        </select> 
+
+        <button type="submit">Submit Request</button> 
+
+    </form> 
+
+<% } %> 
+
+</div> 
+
+</body> 
+
+</html> 
