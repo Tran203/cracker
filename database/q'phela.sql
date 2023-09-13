@@ -5,7 +5,8 @@ CREATE TABLE Patient (
     ResidentialAddress VARCHAR(255) NOT NULL,
     IDNumberOrPassport VARCHAR(13) NOT NULL,
     EmailAddress VARCHAR(255) NOT NULL,
-    PasswordS VARCHAR(255) NOT NULL
+    PasswordS VARCHAR(255) NOT NULL,
+    C VARCHAR(1) NOT NULL
 );
 
 CREATE TABLE File(

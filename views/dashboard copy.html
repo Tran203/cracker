@@ -153,42 +153,8 @@
         <div class="row">
             <button class="button faqs">FAQ's</button>
         </div>
+    </div>>
         
-        <!-- Pop-up card for the message -->
-        <div class="popup-card">
-            <span class="close-button" onclick="closePopup()">X</span>
-            <h2>Your Virtual File</h2>
-            <p>Your virtual file has been created. File Number: <span id="fileNumber"></span></p>
-        </div>
-    </div>
-    
-    <script>
-    // Function to display the pop-up message
-    function displayPopup() {
-        // Generate a unique file number (you can implement your own logic)
-        var fileNumber = generateFileNumber();
-    
-        // Display the pop-up card
-        var popupCard = document.querySelector('.popup-card');
-        var fileNumberSpan = document.getElementById('fileNumber');
-        fileNumberSpan.textContent = fileNumber;
-        popupCard.style.display = 'block';
-    }
-    
-    // Function to close the pop-up
-    function closePopup() {
-        var popupCard = document.querySelector('.popup-card');
-        popupCard.style.display = 'none';
-    }
-    
-    // Function to generate a random file number (you can customize this as needed)
-    function generateFileNumber() {
-        return Math.floor(Math.random() * 10000); // Generates a random 4-digit file number
-    }
-    
-    // Call the displayPopup function when the page loads
-    window.onload = displayPopup;
-    </script>
     
     </body>
     </html>

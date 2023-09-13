@@ -148,7 +148,7 @@
         const medicationRequestForm = document.getElementById("medication-request-form");
 
         // Check if fileInfo is provided and not empty (Replace with actual data from Express)
-        const fileInfo = [];
+        const fileInfo = "<%= file %>";
         if (fileInfo.length > 0) {
             // Display the patient file
             fileDisplay.classList.remove("hidden");

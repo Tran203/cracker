@@ -15,12 +15,12 @@ const path = require("path");
     database: 'sql8644076',
   }); */
 
-  const db = mysql.createConnection({
-    host: '127.0.0.1',
-    user: 'root',
-    port:"3306",
-    database: 'test',
-  });
+const db = mysql.createConnection({
+  host: '127.0.0.1',
+  user: 'root',
+  port: "3306",
+  database: 'test',
+});
 
 
 //Express Router
@@ -28,13 +28,13 @@ const router = express.Router();
 
 //Middleware
 router.use(bodyParser.json());
-router.use(cors()); 
+router.use(cors());
 
 //Routes Management
 //Homepage
 //Homepage
 router.get("/", function (req, res) {
-    res.sendFile("views/index.html", { root: __dirname + "/../" });
+  res.sendFile("views/index.html", { root: __dirname + "/../" });
 });
 
 //get the file
@@ -45,42 +45,59 @@ router.get("/api/file", function (req, res) {
   var values = [idNumberOrPassport];
 
   client.query(sql, values, function (err, result) {
-      if (err) {
-          console.error(err);
-          res.send("An error occurred while fetching achievements.");
-      } else {
-          res.render("alumni/achievements", { file: result.rows });
-      }
+    if (err) {
+      console.error(err);
+      res.send("An error occurred while fetching achievements.");
+    } else {
+      res.render("../views/", { file: result.rows });
+    }
   });
 });
 
 //Login
 router.get('/api/login', (req, res) => {
-    res.sendFile("views/Login.html", { root: __dirname + "/../" });    
+  res.sendFile("views/Login.html", { root: __dirname + "/../" });
 });
 
 router.post('/api/login', (req, res) => {
   const receivedData = req.body;
   console.log('Received data:', receivedData);
 
-  const {email, password} = req.body;
+  const { email, password } = req.body;
 
   //sql
   var sql = "SELECT * FROM Patient where EmailAddress =? and PasswordS = ?";
 
   //query
-  db.query(sql,[email,password], function(err,result){
-    if(err){
+  db.query(sql, [email, password], function (err, result) {
+    if (err) {
       throw err;
-    }else{
-       //check details
-       if (result && result.length > 0) {
+    } else {
+      //check details
+      if (result && result.length > 0) {
         var fullname = result[0].FirstName;
+        var idNumberOrPassport = result[0].IDNumberOrPassport;
         console.log(fullname + ' has Login successful!');
         //res.status(200).json({ message: 'Login successful!' });
+
+
+        var data = {
+          idNumberOrPassport: idNumberOrPassport
+        };
+        //res.sendFile("views/dashboard.html", { root: __dirname + "/../" });
+        //res.render("views/dashboard_ejs", {idNumberOrPassport: req.query.idNumberOrPassport})
+
+        ejs.renderFile(path.join(__dirname, "../views/dashboard.ejs"), data, function (err, html) {
+          if (err) {
+            console.error(err);
+            res.send("An error occurred.");
+          } else {
+            res.send(html); // Send the rendered HTML
+          }
+        });
       } else {
-          //res.status(401).json({ message: 'Invalid email or password' });
-          console.log('Invalid email or password');
+        //res.status(401).json({ message: 'Invalid email or password' });
+        console.log('Invalid email or password');
       }
     }
   });
@@ -90,12 +107,12 @@ router.post('/api/login', (req, res) => {
   console.log('Password:', receivedData.password);
 
   // Send a response back to the client
-  res.status(200).json({ message: 'Data received on the server', data: receivedData });
+  //s.status(200).json({ message: 'Data received on the server', data: receivedData });
 });
 
 //Signup
 router.get('/api/signup', (req, res) => {
-    res.sendFile("views/SignUp.html", { root: __dirname + "/../" });    
+  res.sendFile("views/SignUp.html", { root: __dirname + "/../" });
 });
 //Signup
 router.post('/api/signup', (req, res) => {
@@ -122,12 +139,12 @@ router.post('/api/signup', (req, res) => {
   }
 
   // Create an SQL query to insert the data into the Patient table
-  const sql = `INSERT INTO Patient (FirstName, LastName, ResidentialAddress, IDNumberOrPassport, EmailAddress, PasswordS) VALUES (?, ?, ?, ?, ?, ?)`;
+  const sql = `INSERT INTO Patient (FirstName, LastName, ResidentialAddress, IDNumberOrPassport, EmailAddress, PasswordS, C) VALUES (?, ?, ?, ?, ?, ?, ?)`;
 
   // Execute the SQL query with the provided form data
   db.query(
     sql,
-    [firstName, lastName, residentialAddress, idNumberOrPassport, emailAddress, password],
+    [firstName, lastName, residentialAddress, idNumberOrPassport, emailAddress, password, "N"],
     (err, result) => {
       if (err) {
         console.error(err);
@@ -137,19 +154,19 @@ router.post('/api/signup', (req, res) => {
       console.log('Data inserted into the database');
       var data = {
         idNumberOrPassport: idNumberOrPassport
-    };
+      };
       //res.sendFile("views/dashboard.html", { root: __dirname + "/../" });
       //res.render("views/dashboard_ejs", {idNumberOrPassport: req.query.idNumberOrPassport})
-      
+
       ejs.renderFile(path.join(__dirname, "../views/dashboard_ejs.ejs"), data, function (err, html) {
         if (err) {
-            console.error(err);
-            res.send("An error occurred.");
+          console.error(err);
+          res.send("An error occurred.");
         } else {
-            res.send(html); // Send the rendered HTML
+          res.send(html); // Send the rendered HTML
         }
-    });
-   
+      });
+
     }
   );
 
@@ -157,12 +174,12 @@ router.post('/api/signup', (req, res) => {
 
 //dashboard
 router.get('/api/dashboard', (req, res) => {
-    res.sendFile("views/dashboard.html", { root: __dirname + "/../" });    
+  res.sendFile("views/dashboard.html", { root: __dirname + "/../" });
 });
 
 //location
 router.get('/api/location', (req, res) => {
-  res.sendFile("views/Location.html", { root: __dirname + "/../" });    
+  res.sendFile("views/Location.html", { root: __dirname + "/../" });
 });
 
 //About
@@ -178,12 +195,12 @@ router.get("/api/contact", function (req, res) {
 
 //booking_reason
 router.get('/api/que_reason', (req, res) => {
-  res.sendFile("views/book_appointment.html", { root: __dirname + "/../" });    
+  res.sendFile("views/book_appointment.html", { root: __dirname + "/../" });
 });
 
 //generate_ticket
 router.get('/api/generate_ticket', (req, res) => {
-  res.sendFile("views/generate_ticket.html", { root: __dirname + "/../" });    
+  res.sendFile("views/generate_ticket.html", { root: __dirname + "/../" });
 });
 
 
@@ -191,19 +208,19 @@ router.get('/api/generate_ticket', (req, res) => {
 router.get('/api/request_medication', (req, res) => {
   //res.sendFile("views/request_medication.html", { root: __dirname + "/../" });
   var data = {
-    
+
   }
   ejs.renderFile(path.join(__dirname, "../views/request.ejs"), data, function (err, html) {
     if (err) {
-        console.error(err);
-        res.send("An error occurred.");
+      console.error(err);
+      res.send("An error occurred.");
     } else {
-        res.send(html); // Send the rendered HTML
+      res.send(html); // Send the rendered HTML
     }
-});   
+  });
 });
 router.get('/api/get_medication', (req, res) => {
-  res.sendFile("views/get_medication.html", { root: __dirname + "/../" });    
+  res.sendFile("views/get_medication.html", { root: __dirname + "/../" });
 });
 
 

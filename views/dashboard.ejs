@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Your Dashboard</title>
+    <title>Your Dashboard </title>
     <style>
         /* Style for the patient dashboard */
         .dashboard {
@@ -133,7 +133,7 @@
 </head>
 <body>
     <header>
-        <label class="logo">Q-MIN</label>
+        <label class="logo">Q-MIN <%= idNumberOrPassport %></label>
         <nav>
             <a href="/">HOME</a>
             <a href="/api/about">ABOUT</a>
@@ -153,40 +153,7 @@
         <div class="row">
             <button class="button faqs">FAQ's</button>
         </div>
-        
-        <!-- Pop-up card for the message -->
-        <div class="popup-card">
-            <span class="close-button" onclick="closePopup()">X</span>
-            <h2>Your Virtual File</h2>
-            <p>Your virtual file has been created. <br>File Number: <b><span id="fileNumber"></span></b></p>
-        </div>
-    </div>
-    
-    <script>
-        // Function to display the pop-up message
-        function displayPopup() {
-            // Get the idNumberOrPassport value passed from Express.js
-            var idNumberOrPassport = "<%= idNumberOrPassport %>";
-            
-            // Use the idNumberOrPassport as the file number
-            var fileNumber = idNumberOrPassport; // You can customize this as needed
-            
-            // Display the pop-up card
-            var popupCard = document.querySelector('.popup-card');
-            var fileNumberSpan = document.getElementById('fileNumber');
-            fileNumberSpan.textContent = fileNumber;
-            popupCard.style.display = 'block';
-        }
-        
-        // Function to close the pop-up
-        function closePopup() {
-            var popupCard = document.querySelector('.popup-card');
-            popupCard.style.display = 'none';
-        }
-        
-        // Call the displayPopup function when the page loads
-        window.onload = displayPopup;
-        </script>
+    </div>>
         
     
     </body>
