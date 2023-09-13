@@ -189,7 +189,18 @@ router.get('/api/generate_ticket', (req, res) => {
 
 //request_medication
 router.get('/api/request_medication', (req, res) => {
-  res.sendFile("views/request_medication.html", { root: __dirname + "/../" });    
+  //res.sendFile("views/request_medication.html", { root: __dirname + "/../" });
+  var data = {
+    
+  }
+  ejs.renderFile(path.join(__dirname, "../views/request.ejs"), data, function (err, html) {
+    if (err) {
+        console.error(err);
+        res.send("An error occurred.");
+    } else {
+        res.send(html); // Send the rendered HTML
+    }
+});   
 });
 router.get('/api/get_medication', (req, res) => {
   res.sendFile("views/get_medication.html", { root: __dirname + "/../" });    
