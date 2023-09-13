@@ -6,11 +6,51 @@
     <link rel="stylesheet" href="book_appointment.css">
     <title>Book Appointment</title>
     <style>
+        * {
+        padding: 0;
+        margin: 0;
+        text-decoration: none;
+        box-sizing: border-box;
+    }
         /* Global styles */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
 }
+
+nav {
+        background-color: rgb(20, 223, 102);
+        height: 60px;
+        width: 100%;
+    }
+
+    label.logo {
+        color: white;
+        font-size: 35px;
+        line-height: 80px;
+        padding: 0 100px;
+        font-weight: bold;
+    }
+
+    nav ul {
+        float: right;
+        margin-right: 20px;
+    }
+
+    nav ul li {
+        display: inline-block;
+        line-height: 80px;
+        margin: 0 5px;
+        position: relative; /* Added to position dropdown */
+    }
+
+    nav ul li a {
+        color: white;
+        font-size: 17px;
+        text-transform: uppercase;
+        padding: 7px 13px;
+        border-radius: 3px;
+    }
 
 .container {
     background-color: #fff;
@@ -58,6 +98,29 @@ button{
     </style>
 </head>
 <body>
+    <header>
+        <nav>
+            <label class="logo">Q-MIN</label>
+            <ul>
+                <li class="dropdown"><a href="LandingPage.html">HOME</a>
+        
+                </li>
+                <li class="dropdown"><a href="dashboard.html">DASHBOARD</a>
+        
+                </li>
+                <li class="dropdown"><a href="#">SERVICE</a>
+        
+                </li>
+                <li class="dropdown"><a href="#">CONTACT</a>
+        
+                </li>
+                <li class="dropdown">
+                    <a href="#">ABOUT</a>
+        
+                </li>
+            </ul>
+        </nav>
+    </header>
     <div class="container">
         <h2>Book Appointment</h2>
         
