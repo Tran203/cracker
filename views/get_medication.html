@@ -11,10 +11,68 @@
             margin: 0;
             padding: 0;
         }
-    
+        * {
+            padding: 0;
+            margin: 0;
+            text-decoration: none;
+            box-sizing: border-box;
+        }
+
+        nav {
+            background-color: rgb(20, 223, 102);
+            height: 60px;
+            width: 100%;
+        }
+
+        label.logo {
+            color: white;
+            font-size: 35px;
+            line-height: 80px;
+            padding: 0 100px;
+            font-weight: bold;
+        }
+
+        nav ul {
+            float: right;
+            margin-right: 20px;
+        }
+
+        nav ul li {
+            display: inline-block;
+            line-height: 80px;
+            margin: 0 5px;
+            position: relative; /* Added to position dropdown */
+        }
+
+        nav ul li a {
+            color: white;
+            font-size: 17px;
+            text-transform: uppercase;
+            padding: 7px 13px;
+            border-radius: 3px;
+        }
+
+        /* Style for dropdown */
+        .dropdown .dropOption {
+            display: none;
+            position: absolute;
+            background:  white;
+            /*margin-top: 15px;*/
+            margin-left: 0; /* Adjust as needed */
+        }
+
+        /* Show the dropdown when hovering over the menu item */
+        .dropdown:hover .dropOption {
+            display:block;
+        }
+
+        a.active, a:hover {
+            background: rgba(90, 200, 120, 0.9);
+            transform: .5s;
+        }
         .container {
             max-width: 600px;
-            margin: 0 auto;
+            margin: 40px auto 0;
             background-color: #fff;
             padding: 30px;
             border-radius: 10px;
@@ -22,7 +80,7 @@
         }
     
         h2 {
-            color:#4CAF50;
+            color: rgba(90, 200, 120, 0.9);
             margin-bottom: 20px;
         }
     
@@ -36,6 +94,27 @@
     </style>
 </head>
 <body>
+<nav>
+    <label class="logo">Q-MIN</label>
+    <ul>
+        <li class="dropdown"><a href="/">HOME</a>
+
+        </li>
+        <li class="dropdown"><a href="/api/dashboard">DASHBOARD</a>
+
+        </li>
+        <li class="dropdown"><a href="#">SERVICE</a>
+
+        </li>
+        <li class="dropdown"><a href="/api/contact">CONTACT</a>
+
+        </li>
+        <li class="dropdown">
+            <a href="/api/about">ABOUT</a>
+
+        </li>
+    </ul>
+</nav>
     <div class="container">
         <h2>Medication Prescription</h2>
         

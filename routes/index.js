@@ -77,7 +77,7 @@ router.post('/api/login', (req, res) => {
       if (result && result.length > 0) {
         var fullname = result[0].FirstName;
         var idNumberOrPassport = result[0].IDNumberOrPassport;
-        console.log(fullname + ' has Login successful!');
+        console.log(fullname+ " "+ idNumberOrPassport + ' has Login successful!');
         //res.status(200).json({ message: 'Login successful!' });
 
 
