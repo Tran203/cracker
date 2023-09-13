@@ -36,7 +36,7 @@
 
         /* Style for "Book Appointment" button */
         .book-appointment {
-            background-color: #4CAF50;
+            background-color: #50C878;
             /* Green color */
         }
 
@@ -49,7 +49,7 @@
 
         /* Style for "Emergency" button */
         .emergency {
-            background-color: #4CAF50;
+            background-color: #50C878;
             /* Red color */
         }
 
@@ -63,7 +63,7 @@
         /* Style for "FAQ's" button */
         .faqs {
             flex-grow: 3;
-            background-color: #4CAF50;
+            background-color:#50C878;
             /* Yellow color */
         }
 
@@ -94,9 +94,53 @@
             right: 10px;
             cursor: pointer;
         }
+        header {
+            background-color: #50C878;
+            text-align: right;
+            padding: 35px 40px;
+            position: relative;
+            z-index: 1;
+        }
+        nav {
+            position: absolute;
+            top: 30px;
+            right: 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            margin: 0 20px;
+            padding: 5px 10px; /* Add padding to make the clickable area larger */
+        }
+
+        .logo {
+            position: absolute;
+            top: 30px;
+            left: 40px;
+            font-weight: bold; /* Make the logo bold */
+            color: white; /* Set the color to white */
+            font-size: 1.5em; /* Adjust the font size as needed */
+        }
+        .dashboard {
+            text-align: center;
+            margin-top: 50px; /* Adjust the top margin */
+        }
+        .active-link {
+            background-color: #3d7d30 !important; /* Darker background color for active link */
+        }
     </style>
 </head>
 <body>
+    <header>
+        <label class="logo">Q-MIN</label>
+        <nav>
+            <a href="/">HOME</a>
+            <a href="/api/about">ABOUT</a>
+            <a href="/api/dashboard" class="active-link">SERVICES</a>
+            <a href="/api/contact" >CONTACT</a>
+        </nav>
+    </header>
 
     <div class="dashboard">
         <div class="row">
