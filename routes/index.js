@@ -8,12 +8,12 @@ const path = require("path");
 
 //database
 const db = mysql.createConnection({
-    host: 'sql8.freemysqlhosting.net',
-    user: 'sql8644076',
-    port:"3306",
-    password: '7xIUTgHi35',
-    database: 'sql8644076',
-  });
+  host: 'sql8.freemysqlhosting.net',
+  user: 'sql8646383',
+  port:"3306",
+  password: 'G6p8cawiNf',
+  database: 'sql8646383',
+});
 
 /*const db = mysql.createConnection({
   host: '127.0.0.1',
