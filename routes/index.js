@@ -7,15 +7,15 @@ const ejs = require("ejs");
 const path = require("path");
 
 //database
-const db = mysql.createConnection({
+/*const db = mysql.createConnection({
   host: 'sql8.freemysqlhosting.net',
   user: 'sql8646383',
   port:"3306",
   password: 'G6p8cawiNf',
   database: 'sql8646383',
-});
+}); 
 
-/*const db = mysql.createConnection({
+//const db = mysql.createConnection({
   host: '127.0.0.1',
   user: 'root',
   port: "3306",
@@ -42,7 +42,7 @@ router.get("/api/file", function (req, res) {
   //var idNumberOrPassport = req.query.idNumberOrPassport;
   var idNumberOrPassport = 123;
   // Query the database to fetch achievements for the given alumni_id
-  var sql = "SELECT * FROM Patient WHERE IDNumberOrPassport = ?";
+  /* var sql = "SELECT * FROM Patient WHERE IDNumberOrPassport = ?";
   var values = [idNumberOrPassport];
 
   db.query(sql, values, function (err, result) {
@@ -52,9 +52,32 @@ router.get("/api/file", function (req, res) {
     } else {
       fileinfo = result[0];
       console.log(fileinfo);
-      res.render("../views/request.ejs", { fileInfo: result[0] });
+     
     }
-  });
+  }); */
+
+  res.render("../views/request.ejs", { fileInfo: 'Y'});
+});
+
+router.get("/api/file2", function (req, res) {
+  //var idNumberOrPassport = req.query.idNumberOrPassport;
+  var idNumberOrPassport = 123;
+  // Query the database to fetch achievements for the given alumni_id
+  /* var sql = "SELECT * FROM Patient WHERE IDNumberOrPassport = ?";
+  var values = [idNumberOrPassport];
+
+  db.query(sql, values, function (err, result) {
+    if (err) {
+      console.error(err);
+      res.send("An error occurred while fetching achievements.");
+    } else {
+      fileinfo = result[0];
+      console.log(fileinfo);
+     
+    }
+  }); */
+
+  res.render("../views/request.ejs", { fileInfo: 'N'});
 });
 
 //Login
@@ -69,7 +92,7 @@ router.post('/api/login', (req, res) => {
   const { email, password } = req.body;
 
   //sql
-  var sql = "SELECT * FROM Patient where EmailAddress =? and PasswordS = ?";
+  /*var sql = "SELECT * FROM Patient where EmailAddress =? and PasswordS = ?";
 
   //query
   db.query(sql, [email, password], function (err, result) {
@@ -82,26 +105,25 @@ router.post('/api/login', (req, res) => {
         var idNumberOrPassport = result[0].IDNumberOrPassport;
         console.log(fullname+ " "+ idNumberOrPassport + ' has Login successful!');
         //res.status(200).json({ message: 'Login successful!' });
-
-
-        var data = {
-          idNumberOrPassport: idNumberOrPassport
-        };
-        //res.sendFile("views/dashboard.html", { root: __dirname + "/../" });
-        //res.render("views/dashboard_ejs", {idNumberOrPassport: req.query.idNumberOrPassport})
-
-        ejs.renderFile(path.join(__dirname, "../views/dashboard.ejs"), data, function (err, html) {
-          if (err) {
-            console.error(err);
-            res.send("An error occurred.");
-          } else {
-            res.send(html); // Send the rendered HTML
-          }
-        });
       } else {
         //res.status(401).json({ message: 'Invalid email or password' });
         console.log('Invalid email or password');
       }
+    }
+  }); */
+
+  var data = {
+    idNumberOrPassport: 123
+  };
+  //res.sendFile("views/dashboard.html", { root: __dirname + "/../" });
+  //res.render("views/dashboard_ejs", {idNumberOrPassport: req.query.idNumberOrPassport})
+
+  ejs.renderFile(path.join(__dirname, "../views/dashboard.ejs"), data, function (err, html) {
+    if (err) {
+      console.error(err);
+      res.send("An error occurred.");
+    } else {
+      res.send(html); // Send the rendered HTML
     }
   });
 
@@ -142,10 +164,10 @@ router.post('/api/signup', (req, res) => {
   }
 
   // Create an SQL query to insert the data into the Patient table
-  const sql = `INSERT INTO Patient (FirstName, LastName, ResidentialAddress, IDNumberOrPassport, EmailAddress, PasswordS, C) VALUES (?, ?, ?, ?, ?, ?, ?)`;
+  //const sql = `INSERT INTO Patient (FirstName, LastName, ResidentialAddress, IDNumberOrPassport, EmailAddress, PasswordS, C) VALUES (?, ?, ?, ?, ?, ?, ?)`;
 
   // Execute the SQL query with the provided form data
-  db.query(
+  /*db.query(
     sql,
     [firstName, lastName, residentialAddress, idNumberOrPassport, emailAddress, password, "N"],
     (err, result) => {
@@ -155,28 +177,32 @@ router.post('/api/signup', (req, res) => {
       }
 
       console.log('Data inserted into the database');
-      var data = {
-        idNumberOrPassport: idNumberOrPassport
-      };
-      //res.sendFile("views/dashboard.html", { root: __dirname + "/../" });
-      //res.render("views/dashboard_ejs", {idNumberOrPassport: req.query.idNumberOrPassport})
-
-      ejs.renderFile(path.join(__dirname, "../views/dashboard_ejs.ejs"), data, function (err, html) {
-        if (err) {
-          console.error(err);
-          res.send("An error occurred.");
-        } else {
-          res.send(html); // Send the rendered HTML
-        }
-      });
-
     }
-  );
+  );*/
+
+  var data = {
+    idNumberOrPassport: idNumberOrPassport
+  };
+  //res.sendFile("views/dashboard.html", { root: __dirname + "/../" });
+  //res.render("views/dashboard_ejs", {idNumberOrPassport: req.query.idNumberOrPassport})
+
+  ejs.renderFile(path.join(__dirname, "../views/dashboard_ejs.ejs"), data, function (err, html) {
+    if (err) {
+      console.error(err);
+      res.send("An error occurred.");
+    } else {
+      res.send(html); // Send the rendered HTML
+    }
+  });
 
 });
 
 //dashboard
 router.get('/api/dashboard', (req, res) => {
+  res.sendFile("views/dashboard.html", { root: __dirname + "/../" });
+});
+
+router.get('/api/dashboard2', (req, res) => {
   res.sendFile("views/dashboard.html", { root: __dirname + "/../" });
 });
 
@@ -224,6 +250,10 @@ router.get('/api/request_medication', (req, res) => {
 });
 router.get('/api/get_medication', (req, res) => {
   res.sendFile("views/get_medication.html", { root: __dirname + "/../" });
+});
+
+router.get('/api/get_medication2', (req, res) => {
+  res.sendFile("views/get_medication_copy.html", { root: __dirname + "/../" });
 });
 
 

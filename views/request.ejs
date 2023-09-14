@@ -193,21 +193,21 @@ background-color: #0056b3;
 
 <!-- Check if 'C' is 'Y' --> 
 
-<% if (fileInfo.C === 'Y') { %> 
+<% if (fileInfo === 'Y') { %> 
 
 <!-- Display patient file content based on the database columns --> 
 
 <h3>Patient File</h3> 
 
-<p><strong>First Name:</strong> <%= fileInfo.FirstName %></p> 
+<p><strong>First Name:</strong> Busisiwe</p> 
 
-<p><strong>Last Name:</strong> <%= fileInfo.LastName %></p> 
+<p><strong>Last Name:</strong> Jali</p> 
 
-<p><strong>Residential Address:</strong> <%= fileInfo.ResidentialAddress %></p> 
+<p><strong>Residential Address:</strong> 123 Pretoria Street</p> 
 
-<p><strong>ID Number/Passport:</strong> <%= fileInfo.IDNumberOrPassport %></p> 
+<p><strong>ID Number/Passport:</strong> 9903045170081</p> 
 
-<p><strong>Email Address:</strong> <%= fileInfo.EmailAddress %></p>
+<p><strong>Email Address:</strong> busi@email.com</p>
 
 <p><strong>Medical History:</strong> Patient has a history of hypertension.</p>
 
@@ -230,7 +230,7 @@ background-color: #0056b3;
 
     <h3>Choose/Request Basic Medicine</h3> 
 
-    <form action="/submit_medicine_request" method="post"> 
+    <form action="/api/get_medication2" method="get"> 
 
         <!-- Add your form fields for choosing/requesting basic medicine --> 
 
@@ -238,9 +238,9 @@ background-color: #0056b3;
 
         <select id="medicine" name="medicine"> 
 
-            <option value="Medicine 1">Medicine 1</option> 
+            <!-- <option value="ARVs">Medicine 1</option>  -->
 
-            <option value="Medicine 2">Medicine 2</option> 
+            <option value="Panado">Panado</option> 
 
             <!-- Add more medicine options as needed --> 
 

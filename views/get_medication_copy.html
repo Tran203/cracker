@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +12,7 @@
             margin: 0;
             padding: 0;
         }
+
         * {
             padding: 0;
             margin: 0;
@@ -41,7 +43,8 @@
             display: inline-block;
             line-height: 80px;
             margin: 0 5px;
-            position: relative; /* Added to position dropdown */
+            position: relative;
+            /* Added to position dropdown */
         }
 
         nav ul li a {
@@ -56,20 +59,23 @@
         .dropdown .dropOption {
             display: none;
             position: absolute;
-            background:  white;
+            background: white;
             /*margin-top: 15px;*/
-            margin-left: 0; /* Adjust as needed */
+            margin-left: 0;
+            /* Adjust as needed */
         }
 
         /* Show the dropdown when hovering over the menu item */
         .dropdown:hover .dropOption {
-            display:block;
+            display: block;
         }
 
-        a.active, a:hover {
+        a.active,
+        a:hover {
             background: rgba(90, 200, 120, 0.9);
             transform: .5s;
         }
+
         .container {
             max-width: 600px;
             margin: 40px auto 0;
@@ -78,52 +84,55 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-    
+
         h2 {
             color: rgba(90, 200, 120, 0.9);
             margin-bottom: 20px;
         }
-    
+
         h3 {
             margin-top: 20px;
         }
-    
+
         p {
             margin: 10px 0;
         }
     </style>
 </head>
+
 <body>
-<nav>
-    <label class="logo">Q-MIN</label>
-    <ul>
-        <li class="dropdown"><a href="/">HOME</a>
+    <nav>
+        <label class="logo">Q-MIN</label>
+        <ul>
+            <li class="dropdown"><a href="/">HOME</a>
 
-        </li>
-        <li class="dropdown"><a href="#">DASHBOARD</a>
+            </li>
+            <li class="dropdown"><a href="/api/dashboard">DASHBOARD</a>
 
-        </li>
-        <li class="dropdown"><a href="#">SERVICE</a>
+            </li>
+            <li class="dropdown"><a href="#">SERVICE</a>
 
-        </li>
-        <li class="dropdown"><a href="/api/contact">CONTACT</a>
+            </li>
+            <li class="dropdown"><a href="/api/contact">CONTACT</a>
 
-        </li>
-        <li class="dropdown">
-            <a href="/api/about">ABOUT</a>
+            </li>
+            <li class="dropdown">
+                <a href="/api/about">ABOUT</a>
 
-        </li>
-    </ul>
-</nav>
+            </li>
+        </ul>
+    </nav>
     <div class="container">
         <h2>Medication Prescription</h2>
-        
-        <h3>Your Medication:</h3>
-        <p><strong>Condition:</strong> Hypertension</p>
-        <p><strong>Medicine:</strong> Lisinopril (10mg)</p>
-        <p><strong>How to Take:</strong> Take one tablet daily with or without food. Consult your healthcare provider for more details.</p>
-        
+
+        <h3>Your Medication: <strong>Panado</strong></h3>
+        <p><strong>Medicine:</strong> Panado</p>
+        <p><strong>How to Take:</strong> Take one tablet as needed for pain or fever relief. Follow the instructions on
+            the packaging or consult your healthcare provider for more details.</p>
+
+
         <!-- Additional medication details can be displayed here -->
     </div>
 </body>
+
 </html>
