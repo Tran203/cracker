@@ -203,7 +203,20 @@ router.get('/api/dashboard', (req, res) => {
 });
 
 router.get('/api/dashboard2', (req, res) => {
-  res.sendFile("views/dashboard.html", { root: __dirname + "/../" });
+  var data = {
+    idNumberOrPassport: 123
+  };
+  //res.sendFile("views/dashboard.html", { root: __dirname + "/../" });
+  //res.render("views/dashboard_ejs", {idNumberOrPassport: req.query.idNumberOrPassport})
+
+  ejs.renderFile(path.join(__dirname, "../views/dashboard.ejs"), data, function (err, html) {
+    if (err) {
+      console.error(err);
+      res.send("An error occurred.");
+    } else {
+      res.send(html); // Send the rendered HTML
+    }
+  });
 });
 
 //location
