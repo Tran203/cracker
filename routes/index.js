@@ -7,20 +7,20 @@ const ejs = require("ejs");
 const path = require("path");
 
 //database
-/*const db = mysql.createConnection({
+const db = mysql.createConnection({
     host: 'sql8.freemysqlhosting.net',
     user: 'sql8644076',
     port:"3306",
     password: '7xIUTgHi35',
     database: 'sql8644076',
-  }); */
+  });
 
-const db = mysql.createConnection({
+/*const db = mysql.createConnection({
   host: '127.0.0.1',
   user: 'root',
   port: "3306",
   database: 'test',
-});
+}); */
 
 
 //Express Router
