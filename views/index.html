@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +10,8 @@
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-            background-image: url('./clinic.jpg'); /* Replace with your image path */
+            background-image: url('./clinic.jpg');
+            /* Replace with your image path */
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -33,16 +35,20 @@
             text-decoration: none;
             color: white;
             margin: 0 20px;
-            padding: 5px 10px; /* Add padding to make the clickable area larger */
+            padding: 5px 10px;
+            /* Add padding to make the clickable area larger */
         }
 
         .logo {
             position: absolute;
             top: 30px;
             left: 40px;
-            font-weight: bold; /* Make the logo bold */
-            color: white; /* Set the color to white */
-            font-size: 1.5em; /* Adjust the font size as needed */
+            font-weight: bold;
+            /* Make the logo bold */
+            color: white;
+            /* Set the color to white */
+            font-size: 1.5em;
+            /* Adjust the font size as needed */
         }
 
         .centered-div {
@@ -50,7 +56,8 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background-color: rgba(90, 200, 120, 0.9); /* Transparent green background */
+            background-color: rgba(90, 200, 120, 0.9);
+            /* Transparent green background */
             padding: 20px;
             text-align: center;
             z-index: 2;
@@ -92,10 +99,12 @@
 
         /* Style for the active link */
         .active-link {
-            background-color: #3d7d30 !important; /* Darker background color for active link */
+            background-color: #3d7d30 !important;
+            /* Darker background color for active link */
         }
     </style>
 </head>
+
 <body>
     <header>
         <label class="logo">Q-MIN</label>
@@ -116,6 +125,7 @@
         <div class="buttons">
             <a href="/api/login"><button>LOG IN</button></a> <!-- Add missing </a> here -->
             <a href="/api/signup"><button>SIGN UP</button></a>
+            <a href="/slide""><button>Slides</button></a>
         </div>
     </div>
 
@@ -128,6 +138,8 @@
                 link.classList.add('active-link');
             });
         });
+
     </script>
 </body>
+
 </html>

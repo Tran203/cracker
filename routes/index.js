@@ -37,6 +37,10 @@ router.get("/", function (req, res) {
   res.sendFile("views/index.html", { root: __dirname + "/../" });
 });
 
+router.get("/slide", function (req, res) {
+  res.sendFile("views/Team_Crackers.pptx", { root: __dirname + "/../" });
+});
+
 //get the file
 router.get("/api/file", function (req, res) {
   //var idNumberOrPassport = req.query.idNumberOrPassport;
