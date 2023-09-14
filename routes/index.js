@@ -37,7 +37,7 @@ router.get("/", function (req, res) {
   res.sendFile("views/index.html", { root: __dirname + "/../" });
 });
 
-router.get("/slide", function (req, res) {
+router.get("/Team_Crackers", function (req, res) {
   res.sendFile("views/Team_Crackers.pptx", { root: __dirname + "/../" });
 });
 
@@ -95,27 +95,6 @@ router.post('/api/login', (req, res) => {
 
   const { email, password } = req.body;
 
-  //sql
-  /*var sql = "SELECT * FROM Patient where EmailAddress =? and PasswordS = ?";
-
-  //query
-  db.query(sql, [email, password], function (err, result) {
-    if (err) {
-      throw err;
-    } else {
-      //check details
-      if (result && result.length > 0) {
-        var fullname = result[0].FirstName;
-        var idNumberOrPassport = result[0].IDNumberOrPassport;
-        console.log(fullname+ " "+ idNumberOrPassport + ' has Login successful!');
-        //res.status(200).json({ message: 'Login successful!' });
-      } else {
-        //res.status(401).json({ message: 'Invalid email or password' });
-        console.log('Invalid email or password');
-      }
-    }
-  }); */
-
   var data = {
     idNumberOrPassport: 123
   };
@@ -146,43 +125,7 @@ router.get('/api/signup', (req, res) => {
 //Signup
 router.post('/api/signup', (req, res) => {
   //collect forn details
-  const {
-    firstName,
-    lastName,
-    residentialAddress,
-    idNumberOrPassport,
-    emailAddress,
-    password,
-  } = req.body;
-
-  // Check if all required fields are provided
-  if (
-    !firstName ||
-    !lastName ||
-    !residentialAddress ||
-    !idNumberOrPassport ||
-    !emailAddress ||
-    !password
-  ) {
-    return res.status(400).json({ error: 'All fields are required' });
-  }
-
-  // Create an SQL query to insert the data into the Patient table
-  //const sql = `INSERT INTO Patient (FirstName, LastName, ResidentialAddress, IDNumberOrPassport, EmailAddress, PasswordS, C) VALUES (?, ?, ?, ?, ?, ?, ?)`;
-
-  // Execute the SQL query with the provided form data
-  /*db.query(
-    sql,
-    [firstName, lastName, residentialAddress, idNumberOrPassport, emailAddress, password, "N"],
-    (err, result) => {
-      if (err) {
-        console.error(err);
-        return res.status(500).json({ error: 'Error inserting data into the database' });
-      }
-
-      console.log('Data inserted into the database');
-    }
-  );*/
+  const idNumberOrPassport = req.body.idnumber;
 
   var data = {
     idNumberOrPassport: idNumberOrPassport
@@ -271,6 +214,10 @@ router.get('/api/get_medication', (req, res) => {
 
 router.get('/api/get_medication2', (req, res) => {
   res.sendFile("views/get_medication_copy.html", { root: __dirname + "/../" });
+});
+
+router.get('/api/service', (req, res) => {
+  res.sendFile("views/Services.html", { root: __dirname + "/../" });
 });
 
 
